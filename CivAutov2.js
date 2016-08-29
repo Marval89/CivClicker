@@ -17,14 +17,14 @@ function obliczenia(){
 	netStone2 = population.miners * (efficiency.miners * efficiency.happiness) * (1 + (wonder.stone/10));
 }
 function TworzPracownikow() {
-	if(netFood2>=1)
+	if(netFood2>=2)
 		spawn(1);
 	
 }
 function ZatrudniajFarmerow(){
-	if(netFood2<1)
+	if(netFood2<2)
 	hire('farmers',1);
-	if(netFood2>1){
+	if(netFood2>2){
 		if(population.unemployed>0){
 			if(population.woodcutters<=population.miners)
 				hire('woodcutters',1);
@@ -55,7 +55,7 @@ function mainLoop() {
             increment(wood);
         }
         
-        if(wood.total>=20 && freeLand > 980){
+        if(wood.total>=20 && freeLand > 950){
         createBuilding(whut,1);    
         }
         
