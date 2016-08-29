@@ -15,6 +15,12 @@ function delayStartAgain(){
 
 function mainLoop() {
         if (food.total<100) {
-        increment(food);
+        increment(food);}
+        if(wood.total<20) {
+            increment(wood);
         }
+        if(wood.total>=20 && freeLand > 980){
+        createbuilding(whut,1);    
+        }
+        
 }
