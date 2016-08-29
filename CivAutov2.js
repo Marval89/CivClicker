@@ -62,7 +62,8 @@ function delayStartAgain(){
 function mainLoop() {
 	obliczenia();
 	TworzPracownikow();
-	ZatrudniajFarmerow()
+	ZatrudniajFarmerow();
+	Magazyny();
     freeLand = Math.max(land - totalBuildings, 0)
         if (food.total<100 || skins.total<2) {
         increment(food);}
