@@ -19,6 +19,7 @@ function mainLoop() {
         if(wood.total<20) {
             increment(wood);
         }
+        freeLand = Math.max(land - totalBuildings, 0)
         if(wood.total>=20 && freeLand > 980){
         createbuilding(whut,1);    
         }
