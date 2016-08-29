@@ -39,7 +39,7 @@ function ZatrudniajFarmerow(){
 	else if(population.unemployed>0 && population.blacksmiths<population.miners/25){
 		if(population.blacksmiths==smithy.total)
 			createBuilding(smithy,1);
-		hire('blacksmisths',1);
+		hire('blacksmiths',1);
 	}
 	else if(population.unemployed>0 && population.apothecaries<population.miners/100){
 		if(population.apothecaries==apothecary.total)
