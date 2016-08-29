@@ -8,7 +8,7 @@ var netStone2;
 var maxFoodA;
 var maxWoodA;
 var maxStoneA;
-var FoodPrzyrost=10;
+var FoodPrzyrost=50;
 
 function obliczenia(){
     	//Calculate and update net production values for primary resources
@@ -27,37 +27,34 @@ function TworzPracownikow() {
 }
 function ZatrudniajFarmerow(){
 	if(netFood2<=FoodPrzyrost){
-		if(population.unemployed<1)
-			spawn(1);
 		hire('farmers',1);
 	}
-	if(netFood2>FoodPrzyrost){
-		if(population.unemployed>0){
-			if(population.tanners<population.miners/25){
-				if(population.tanners==tannery.total)
-					createBuilding(tannery,1);
-				hire('tanners',1);
-			}
-			else if(population.blacksmiths<population.miners/25){
-				if(population.blacksmiths==smithy.total)
-					createBuilding(smithy,1);
-				hire('blackmisths',1);
-			}
-			else if(population.apothecaries<population.miners/100){
-				if(population.apothecaries==apothecary.total)
-					createBuilding(apothecary,1);
-				hire('apothecaries',1);
-			}
-			else if(population.clerics<population.miners/25){
-				if(population.clerics==temple.total)
-					createBuilding(temple,1);
-				hire('clerics',1);
-			}
-			else if(population.woodcutters<=population.miners)
-				hire('woodcutters',1);
-			else
-				hire('miners',1);
+	if(population.unemployed>0) {
+		if(population.tanners<population.miners/25){
+			if(population.tanners==tannery.total)
+				createBuilding(tannery,1);
+			hire('tanners',1);
 		}
+		else if(population.blacksmiths<population.miners/25){
+			if(population.blacksmiths==smithy.total)
+				createBuilding(smithy,1);
+			hire('blackmisths',1);
+		}
+		else if(population.apothecaries<population.miners/100){
+			if(population.apothecaries==apothecary.total)
+				createBuilding(apothecary,1);
+			hire('apothecaries',1);
+		}
+		else if(population.clerics<population.miners/25){
+			if(population.clerics==temple.total)
+				createBuilding(temple,1);
+			hire('clerics',1);
+		}
+		else if(population.woodcutters<=population.miners)
+			hire('woodcutters',1);
+		else
+			hire('miners',1);
+		
 	}
 }
 
