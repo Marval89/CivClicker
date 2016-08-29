@@ -1,8 +1,4 @@
-function mainLoop() {
-        if (food.total<100) {
-        increment(food);
-        }
-}
+
 
 var runInterval = 100;      //How often to loop through logic
 var startupDelay = 2000;
@@ -15,4 +11,10 @@ function delayStart() {
 function delayStartAgain(){
     setInterval(mainLoop, runInterval);
     
+}
+
+function mainLoop() {
+        if (food.total<100) {
+        increment(food);
+        }
 }
