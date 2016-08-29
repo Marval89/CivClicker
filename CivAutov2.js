@@ -49,10 +49,10 @@ function ZatrudniajFarmerow(){
 			createBuilding(temple,1);
 		hire('clerics',1);
 	}
-	else if(population.unemployed>0 && population.woodcutters<=population.farmers/3){
+	else if(population.unemployed>0 && population.woodcutters<=population.farmers/5){
 		hire('woodcutters',1);
 	}
-	else if(population.unemployed>0 && population.miners<=population.farmers/3){
+	else if(population.unemployed>0 && population.miners<=population.farmers/5){
 		hire('miners',1);
 	}
 		
