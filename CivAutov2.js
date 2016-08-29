@@ -32,7 +32,6 @@ function ZatrudniajFarmerow(){
 				hire('miners',1);
 		}
 	}
-	if(population.unemployed>0 && netFood2>1)
 }
 
 
