@@ -24,6 +24,15 @@ function TworzPracownikow() {
 function ZatrudniajFarmerow(){
 	if(netFood2<1)
 	hire('farmers',1);
+	if(netFood2>1){
+		if(population.unemployed>0){
+			if(population.woodcutters<=population.miners)
+				hire('woodcutters',1);
+			else
+				hire('miners',1);
+		}
+	}
+	if(population.unemployed>0 && netFood2>1)
 }
 
 
