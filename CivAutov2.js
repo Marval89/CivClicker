@@ -17,9 +17,13 @@ function obliczenia(){
 	netStone2 = population.miners * (efficiency.miners * efficiency.happiness) * (1 + (wonder.stone/10));
 }
 function TworzPracownikow() {
-	if(NetFood2>=1)
+	if(netFood2>=1)
 		spawn(1);
 	
+}
+function ZatrudniajFarmerow(){
+	if(netFood2<1)
+	hire('farmers',1);
 }
 
 
@@ -35,6 +39,7 @@ function delayStartAgain(){
 function mainLoop() {
 	obliczenia();
 	TworzPracownikow();
+	ZatrudniajFarmerow()
     freeLand = Math.max(land - totalBuildings, 0)
         if (food.total<100 || skins.total<2) {
         increment(food);}
