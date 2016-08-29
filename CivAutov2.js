@@ -20,6 +20,7 @@ function obliczenia(){
 	netWood2 = population.woodcutters * (efficiency.woodcutters * efficiency.happiness) * (1 + (wonder.wood/10));
 	netStone2 = population.miners * (efficiency.miners * efficiency.happiness) * (1 + (wonder.stone/10));
 	FoodPrzyrost = population.current / 20;
+	 freeLand = Math.max(land - totalBuildings, 0);
 }
 function TworzPracownikow() {
 	if(netFood2>FoodPrzyrost-1)
@@ -88,15 +89,9 @@ function mainLoop() {
 	TworzPracownikow();
 	ZatrudniajFarmerow();
 	Magazyny();
-    freeLand = Math.max(land - totalBuildings, 0)
-        if (food.total<100 || skins.total<2) {
-        increment(food);}
-        if(wood.total<20) {
-            increment(wood);
-        }
+   
+     
         
-       // if(wood.total>=20 && freeLand > 950){
-        //createBuilding(whut,1);    
-        //}
+     
         
 }
