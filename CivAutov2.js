@@ -92,8 +92,8 @@ function mainLoop() {
             increment(wood);
         }
         
-        if(wood.total>=20 && freeLand > 950){
-        createBuilding(whut,1);    
-        }
+       // if(wood.total>=20 && freeLand > 950){
+        //createBuilding(whut,1);    
+        //}
         
 }
