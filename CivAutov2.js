@@ -29,7 +29,7 @@ function ZatrudniajFarmerow(){
 	if(netFood2<=FoodPrzyrost){
 		hire('farmers',1);
 	}
-	if(population.unemployed>0 && population.tanners<population.miners/25) {
+	else if(population.unemployed>0 && population.tanners<population.miners/25) {
 		if(population.tanners==tannery.total)
 			createBuilding(tannery,1);
 		hire('tanners',1);
