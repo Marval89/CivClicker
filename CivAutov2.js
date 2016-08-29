@@ -8,6 +8,7 @@ var netStone2;
 var maxFoodA;
 var maxWoodA;
 var maxStoneA;
+var FoodPrzyrost=10;
 
 function obliczenia(){
     	//Calculate and update net production values for primary resources
@@ -20,14 +21,14 @@ function obliczenia(){
 	netStone2 = population.miners * (efficiency.miners * efficiency.happiness) * (1 + (wonder.stone/10));
 }
 function TworzPracownikow() {
-	if(netFood2>=2)
+	if(netFood2>FoodPrzyrost-1)
 		spawn(1);
 	
 }
 function ZatrudniajFarmerow(){
-	if(netFood2<2)
+	if(netFood2<=FoodPrzyrost)
 	hire('farmers',1);
-	if(netFood2>2){
+	if(netFood2>FoodPrzyrost){
 		if(population.unemployed>0){
 			if(population.woodcutters<=population.miners)
 				hire('woodcutters',1);
