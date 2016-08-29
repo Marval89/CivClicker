@@ -2,6 +2,10 @@
 
 var runInterval = 100;      //How often to loop through logic
 var startupDelay = 2000;
+var netFood2;
+var netWood2;
+var netStone2;
+
 function obliczenia(){
     	//Calculate and update net production values for primary resources
 	if (population.current > 0 || population.zombies > 0){ //don't want to divide by zero
