@@ -5,6 +5,9 @@ var startupDelay = 2000;
 var netFood2;
 var netWood2;
 var netStone2;
+var maxFoodA;
+var maxWoodA;
+var maxStoneA;
 
 function obliczenia(){
     	//Calculate and update net production values for primary resources
@@ -34,7 +37,19 @@ function ZatrudniajFarmerow(){
 	}
 }
 
-
+function Magazyny(){
+	maxFoodA = 200 + barn.total*200;
+	maxWoodA = 200 + woodstock.total*200;
+	maxStoneA = 200 + stonestock.total*200;
+	if(wood.total>100){
+		if(food.total == maxFoodA)
+		createBuilding(barn,1);
+		if(wood.total == maxWoodA)
+		createBuilding(woodstock,1);
+		if(stone.total == maxStoneA)
+		createBuilding(stonestock,1);
+	}
+}
 setTimeout(delayStart, startupDelay);
 function delayStart() {
     setTimeout(delayStartAgain, startupDelay);
