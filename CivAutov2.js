@@ -35,22 +35,22 @@ function ZatrudniajFarmerow(){
 				createBuilding(tannery,1);
 			hire('tanners',1);
 		}
-		else if(population.blacksmiths<population.miners/25){
+		 if(population.blacksmiths<population.miners/25){
 			if(population.blacksmiths==smithy.total)
 				createBuilding(smithy,1);
 			hire('blackmisths',1);
 		}
-		else if(population.apothecaries<population.miners/100){
+		if(population.apothecaries<population.miners/100){
 			if(population.apothecaries==apothecary.total)
 				createBuilding(apothecary,1);
 			hire('apothecaries',1);
 		}
-		else if(population.clerics<population.miners/25){
+		if(population.clerics<population.miners/25){
 			if(population.clerics==temple.total)
 				createBuilding(temple,1);
 			hire('clerics',1);
 		}
-		else if(population.woodcutters<=population.miners)
+		if(population.woodcutters<=population.miners)
 			hire('woodcutters',1);
 		else
 			hire('miners',1);
