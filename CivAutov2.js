@@ -1,4 +1,4 @@
-function mainLoop {
+function mainLoop() {
         if (food.total<100) {
         increment(food);
         }
