@@ -76,7 +76,7 @@ function ZatrudniajFarmerow(){
 			createBuilding(temple,Przyrost);
 		hire('clerics',Przyrost);
 	}
-	else if(population.unemployed>0 && (population.woodcutters<=population.farmers/5 || population.woodcutters<population.labourers*50)){
+	else if(population.unemployed>0 && (population.woodcutter<=population.miners && population.woodcutters<=population.farmers/5 || population.woodcutters<population.labourers*50)){
 		hire('woodcutters',Przyrost);
 	}
 	else if(population.unemployed>0 && (population.miners<=population.woodcutters || population.miners<population.labourers*50)){
