@@ -25,7 +25,7 @@ function obliczenia(){
 function domki(){
 	if(freeLand > 900 && population.current>population.cap-Przyrost)
 	{
-		if(upgrades.masonry == 0 && wood.total == 200 && skins.total==1)
+		if(upgrades.masonry == 0 && wood.total >= 200 && skins.total>=1)
 		createBuilding(whut,Przyrost);
 	}
 		
