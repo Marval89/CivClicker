@@ -9,7 +9,7 @@ var maxFoodA;
 var maxWoodA;
 var maxStoneA;
 var FoodPrzyrost=200;
-var Przyrost=1000;
+var Przyrost=100;
 function obliczenia(){
     	//Calculate and update net production values for primary resources
 	if (population.current > 0 || population.zombies > 0){ //don't want to divide by zero
