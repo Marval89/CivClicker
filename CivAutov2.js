@@ -22,6 +22,10 @@ function obliczenia(){
 	FoodPrzyrost = population.current / 2;
 	 freeLand = Math.max(land - totalBuildings, 0);
 }
+function Zombie(){
+	if(piety.total>Przyrost*100 && population.corpses>Przyrost)
+	raiseDead(Przyrost);
+}
 function TworzPracownikow() {
 	if(netFood2>FoodPrzyrost-Przyrost*10)
 		spawn(Przyrost);
@@ -48,7 +52,7 @@ function ZatrudniajFarmerow(){
 			createBuilding(apothecary,Przyrost);
 		hire('apothecaries',Przyrost);
 	}
-	else if(population.unemployed>0 && (population.clerics<population.miners*2 || population.clerics<population.labourers*10)){
+	else if(population.clerics < 500000 && population.unemployed>0 && (population.clerics<population.miners*5 || population.clerics<population.labourers*10)){
 		if(population.clerics>temple.total-Przyrost)
 			createBuilding(temple,Przyrost);
 		hire('clerics',Przyrost);
@@ -63,9 +67,9 @@ function ZatrudniajFarmerow(){
 }
 
 function Magazyny(){
-	maxFoodA = 200 + barn.total*200;
-	maxWoodA = 200 + woodstock.total*200;
-	maxStoneA = 200 + stonestock.total*200;
+	maxFoodA = Math.round(barn.total*400);
+	maxWoodA = Math.round(woodstock.total*200);
+	maxStoneA =Math.round(stonestock.total*200);
 	if(wood.total>100){
 		if(food.total >= maxFoodA)
 		createBuilding(barn,Przyrost);
@@ -89,7 +93,7 @@ function mainLoop() {
 	TworzPracownikow();
 	ZatrudniajFarmerow();
 	Magazyny();
-   
+   	Zombie();
      
         
      
