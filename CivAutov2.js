@@ -78,6 +78,7 @@ function Magazyny(){
 		if(stone.total >= maxStoneA)
 		createBuilding(stonestock,Przyrost);
 	}
+	
 }
 setTimeout(delayStart, startupDelay);
 function delayStart() {
