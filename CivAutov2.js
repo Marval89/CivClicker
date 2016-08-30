@@ -36,6 +36,8 @@ function domki(){
 	{
 		if(upgrades.masonry == 0 && wood.total >= 200 && skins.total>=1)
 		createBuilding(whut,Przyrost);
+		else if(upgrade.masonry==1 && wood.total==10 && stone.total=30)
+		createBuilding(cottage,1);
 	}
 		
 }
@@ -108,11 +110,12 @@ function delayStartAgain(){
 
 function mainLoop() {
 	obliczenia();
+	domki();
 	TworzPracownikow();
 	ZatrudniajFarmerow();
 	Magazyny();
    	Zombie();
-     	domki();
+     	
         
      
         
