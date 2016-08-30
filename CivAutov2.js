@@ -9,7 +9,7 @@ var maxFoodA;
 var maxWoodA;
 var maxStoneA;
 var FoodPrzyrost=200;
-
+var Przyrost=1;
 function obliczenia(){
     	//Calculate and update net production values for primary resources
 	if (population.current > 0 || population.zombies > 0){ //don't want to divide by zero
@@ -19,45 +19,45 @@ function obliczenia(){
 	}
 	netWood2 = population.woodcutters * (efficiency.woodcutters * efficiency.happiness) * (1 + (wonder.wood/10));
 	netStone2 = population.miners * (efficiency.miners * efficiency.happiness) * (1 + (wonder.stone/10));
-	FoodPrzyrost = population.current / 20;
+	FoodPrzyrost = population.current / 10;
 	 freeLand = Math.max(land - totalBuildings, 0);
 }
 function TworzPracownikow() {
 	if(netFood2>FoodPrzyrost-1)
-		spawn(1);
+		spawn(Przyrost);
 	
 }
 function ZatrudniajFarmerow(){
 	if(netFood2<=FoodPrzyrost){
 		if(population.unemployed<1)
-			spawn(1);
-		hire('farmers',1);
+			spawn(Przyrost);
+		hire('farmers',Przyrost);
 	}
 	else if(population.unemployed>0 && population.tanners<population.miners/25) {
 		if(population.tanners==tannery.total)
-			createBuilding(tannery,1);
-		hire('tanners',1);
+			createBuilding(tannery,Przyrost);
+		hire('tanners',Przyrost);
 	}
 	else if(population.unemployed>0 && population.blacksmiths<population.miners/25){
 		if(population.blacksmiths==smithy.total)
-			createBuilding(smithy,1);
-		hire('blacksmiths',1);
+			createBuilding(smithy,Przyrost);
+		hire('blacksmiths',Przyrost);
 	}
 	else if(population.unemployed>0 && population.apothecaries<population.miners/100){
 		if(population.apothecaries==apothecary.total)
-			createBuilding(apothecary,1);
-		hire('apothecaries',1);
+			createBuilding(apothecary,Przyrost);
+		hire('apothecaries',Przyrost);
 	}
 	else if(population.unemployed>0 && population.clerics<population.miners/25){
 		if(population.clerics==temple.total)
-			createBuilding(temple,1);
-		hire('clerics',1);
+			createBuilding(temple,Przyrost);
+		hire('clerics',Przyrost);
 	}
 	else if(population.unemployed>0 && population.woodcutters<=population.farmers/5){
-		hire('woodcutters',1);
+		hire('woodcutters',Przyrost);
 	}
 	else if(population.unemployed>0 && population.miners<=population.farmers/5){
-		hire('miners',1);
+		hire('miners',Przyrost);
 	}
 		
 }
@@ -68,11 +68,11 @@ function Magazyny(){
 	maxStoneA = 200 + stonestock.total*200;
 	if(wood.total>100){
 		if(food.total == maxFoodA)
-		createBuilding(barn,1);
+		createBuilding(barn,Przyrost);
 		if(wood.total == maxWoodA)
-		createBuilding(woodstock,1);
+		createBuilding(woodstock,Przyrost);
 		if(stone.total == maxStoneA)
-		createBuilding(stonestock,1);
+		createBuilding(stonestock,Przyrost);
 	}
 }
 setTimeout(delayStart, startupDelay);
