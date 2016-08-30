@@ -33,7 +33,7 @@ function obliczenia(){
 	 freeLand = Math.max(land - totalBuildings, 0);
 }
 function domki(){
-	if(freeLand > TargetFreeLand && population.current>population.cap-Przyrost)
+	if(freeLand > TargetFreeLand && population.current>population.cap-Przyrost && population.unemployed < Przyrost )
 	{
 		if(upgrades.masonry == 0 && wood.total >= 200 && skins.total>=1)
 		createBuilding(whut,Przyrost);
@@ -74,7 +74,7 @@ function ZatrudniajFarmerow(){
 		 	createBuilding(apothecary,Przyrost);
 		hire('apothecaries',Przyrost);
 	}
-	else if(upgrades.masonry == 1 && population.clerics < 500000 && population.unemployed>0 && (population.clerics<population.miners*5 || population.clerics<population.labourers*10)){
+	else if(upgrades.masonry == 1 && population.clerics < 500000 && population.unemployed>0 && (population.clerics<population.miners/5 || population.clerics<population.labourers*10)){
 		if(freeLand > TargetFreeLand && population.clerics>temple.total-Przyrost && wood.total>=30 && stone.total>=120 && herbs.total >=10)
 			createBuilding(temple,Przyrost);
 		hire('clerics',Przyrost);
