@@ -10,6 +10,7 @@ var maxWoodA;
 var maxStoneA;
 var FoodPrzyrost=200;
 var Przyrost=1;
+var TargetFreeLand=500;
 function obliczenia(){
     	//Calculate and update net production values for primary resources
 	if (population.current > 0 || population.zombies > 0){ //don't want to divide by zero
@@ -32,7 +33,7 @@ function obliczenia(){
 	 freeLand = Math.max(land - totalBuildings, 0);
 }
 function domki(){
-	if(freeLand > 900 && population.current>population.cap-Przyrost)
+	if(freeLand > TargetFreeLand && population.current>population.cap-Przyrost)
 	{
 		if(upgrades.masonry == 0 && wood.total >= 200 && skins.total>=1)
 		createBuilding(whut,Przyrost);
@@ -56,22 +57,22 @@ function ZatrudniajFarmerow(){
 			spawn(Przyrost);
 		hire('farmers',Przyrost);
 	}
-	else if(upgrade.masonry == 1 && population.unemployed>0 && (population.tanners<population.miners/25 || population.tanners<population.labourers*2)) {
+	else if(upgrades.masonry==1 && population.unemployed>0 && (population.tanners<population.miners/25 || population.tanners<population.labourers*2)) {
 		if(population.tanners>tannery.total-Przyrost)
 			createBuilding(tannery,Przyrost);
 		hire('tanners',Przyrost);
 	}
-	else if(upgrade.masonry == 1 && population.unemployed>0 && (population.blacksmiths<population.miners/25 ||population.blacksmiths<population.labourers*2)){
+	else if(upgrades.masonry == 1 && population.unemployed>0 && (population.blacksmiths<population.miners/25 ||population.blacksmiths<population.labourers*2)){
 		if(population.blacksmiths>smithy.total-Przyrost)
 			createBuilding(smithy,Przyrost);
 		hire('blacksmiths',Przyrost);
 	}
-	else if(upgrade.masonry == 1 && population.unemployed>0 && (population.apothecaries<population.miners/100 || population.apothecaries<population.labourers)){
+	else if(upgrades.masonry == 1 && population.unemployed>0 && (population.apothecaries<population.miners/100 || population.apothecaries<population.labourers)){
 		if(population.apothecaries>apothecary.total-Przyrost)
 			createBuilding(apothecary,Przyrost);
 		hire('apothecaries',Przyrost);
 	}
-	else if(upgrade.masonry == 1 && population.clerics < 500000 && population.unemployed>0 && (population.clerics<population.miners*5 || population.clerics<population.labourers*10)){
+	else if(upgrades.masonry == 1 && population.clerics < 500000 && population.unemployed>0 && (population.clerics<population.miners*5 || population.clerics<population.labourers*10)){
 		if(population.clerics>temple.total-Przyrost)
 			createBuilding(temple,Przyrost);
 		hire('clerics',Przyrost);
@@ -89,7 +90,7 @@ function Magazyny(){
 	maxFoodA = Math.round(barn.total*200);
 	maxWoodA = Math.round(woodstock.total*200);
 	maxStoneA =Math.round(stonestock.total*200);
-	if(wood.total>100){
+	if(wood.total>100 && freeLand > TargetFreeLand){
 		if(food.total >= maxFoodA)
 		createBuilding(barn,Przyrost);
 		if(wood.total >= maxWoodA)
