@@ -40,9 +40,11 @@ function domki(){
 		if(upgrades.masonry == 0 && wood.total >= 200 && skins.total>=1)
 		createBuilding(whut,Przyrost);
 		else if(upgrades.construction==0 && wood.total>=10 && stone.total>=30)
-		createBuilding(cottage,1);
+		createBuilding(cottage,Przyrost);
 		else if(upgrades.architecture == 0 && wood.total >=30 && stone.total>=70)
-		createBuilding(house,1);
+		createBuilding(house,Przyrost);
+		else if(upgrades.architecture == 1 && wood.total>=200 && stone.total>=200 & leather.total>=20)
+		createBuilding(mansony,Przyrost);
 	}
 		
 }
