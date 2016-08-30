@@ -75,7 +75,7 @@ function ZatrudniajFarmerow(){
 }
 
 function Magazyny(){
-	maxFoodA = Math.round(barn.total*400);
+	maxFoodA = Math.round(barn.total*200);
 	maxWoodA = Math.round(woodstock.total*200);
 	maxStoneA =Math.round(stonestock.total*200);
 	if(wood.total>100){
