@@ -37,8 +37,10 @@ function domki(){
 	{
 		if(upgrades.masonry == 0 && wood.total >= 200 && skins.total>=1)
 		createBuilding(whut,Przyrost);
-		else if(upgrades.masonry==1 && wood.total>=10 && stone.total>=30)
+		else if(upgrades.construction==0 && wood.total>=10 && stone.total>=30)
 		createBuilding(cottage,1);
+		else if(upgrades.architecture == 0 && wood.total >=30 && stone.total>=70)
+		createBuilding(house,1);
 	}
 		
 }
@@ -58,26 +60,26 @@ function ZatrudniajFarmerow(){
 		hire('farmers',Przyrost);
 	}
 	else if(upgrades.masonry==1 && population.unemployed>0 && (population.tanners<population.miners/25 || population.tanners<population.labourers*2)) {
-		if(population.tanners>tannery.total-Przyrost)
+		if(population.tanners>tannery.total-Przyrost && wood.total>=30 && stone.total>=70 && skins.total >=2)
 			createBuilding(tannery,Przyrost);
 		hire('tanners',Przyrost);
 	}
 	else if(upgrades.masonry == 1 && population.unemployed>0 && (population.blacksmiths<population.miners/25 ||population.blacksmiths<population.labourers*2)){
-		if(population.blacksmiths>smithy.total-Przyrost)
+		if(population.blacksmiths>smithy.total-Przyrost && wood.total>=30 && stone.total>=70 && ore.total >=2)
 			createBuilding(smithy,Przyrost);
 		hire('blacksmiths',Przyrost);
 	}
 	else if(upgrades.masonry == 1 && population.unemployed>0 && (population.apothecaries<population.miners/100 || population.apothecaries<population.labourers)){
-		if(population.apothecaries>apothecary.total-Przyrost)
+		if(population.apothecaries>apothecary.total-Przyrost && wood.total>=30 && stone.total>=70 && herbs.total >=2)
 			createBuilding(apothecary,Przyrost);
 		hire('apothecaries',Przyrost);
 	}
 	else if(upgrades.masonry == 1 && population.clerics < 500000 && population.unemployed>0 && (population.clerics<population.miners*5 || population.clerics<population.labourers*10)){
-		if(population.clerics>temple.total-Przyrost)
+		if(population.clerics>temple.total-Przyrost && wood.total>=30 && stone.total>=120 && herbs.total >=10)
 			createBuilding(temple,Przyrost);
 		hire('clerics',Przyrost);
 	}
-	else if(population.unemployed>0 && (population.woodcutter<=population.miners && population.woodcutters<=population.farmers/5 || population.woodcutters<population.labourers*50)){
+	else if(population.unemployed>0 && (population.woodcutters<=population.miners && population.woodcutters<=population.farmers/5 || population.woodcutters<population.labourers*50)){
 		hire('woodcutters',Przyrost);
 	}
 	else if(population.unemployed>0 && (population.miners<=population.woodcutters || population.miners<population.labourers*50)){
