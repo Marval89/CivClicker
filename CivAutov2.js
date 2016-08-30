@@ -9,7 +9,7 @@ var maxFoodA;
 var maxWoodA;
 var maxStoneA;
 var FoodPrzyrost=200;
-var Przyrost=100;
+var Przyrost=1;
 function obliczenia(){
     	//Calculate and update net production values for primary resources
 	if (population.current > 0 || population.zombies > 0){ //don't want to divide by zero
@@ -21,6 +21,14 @@ function obliczenia(){
 	netStone2 = population.miners * (efficiency.miners * efficiency.happiness) * (1 + (wonder.stone/10));
 	FoodPrzyrost = population.current / 2;
 	 freeLand = Math.max(land - totalBuildings, 0);
+}
+function domki(){
+	if(freeLand > 900 && population.current>population.cap-Przyrost)
+	{
+		if(upgrade.masonry == 0 && wood.total == 200 && skins.total==2)
+		createBuilding(tannery,Przyrost);
+	}
+		
 }
 function Zombie(){
 	if(piety.total>Przyrost*100 && population.corpses>Przyrost)
@@ -37,22 +45,22 @@ function ZatrudniajFarmerow(){
 			spawn(Przyrost);
 		hire('farmers',Przyrost);
 	}
-	else if(population.unemployed>0 && (population.tanners<population.miners/25 || population.tanners<population.labourers*2)) {
+	else if(upgrade.masonry == 1 && population.unemployed>0 && (population.tanners<population.miners/25 || population.tanners<population.labourers*2)) {
 		if(population.tanners>tannery.total-Przyrost)
 			createBuilding(tannery,Przyrost);
 		hire('tanners',Przyrost);
 	}
-	else if(population.unemployed>0 && (population.blacksmiths<population.miners/25 ||population.blacksmiths<population.labourers*2)){
+	else if(upgrade.masonry == 1 && population.unemployed>0 && (population.blacksmiths<population.miners/25 ||population.blacksmiths<population.labourers*2)){
 		if(population.blacksmiths>smithy.total-Przyrost)
 			createBuilding(smithy,Przyrost);
 		hire('blacksmiths',Przyrost);
 	}
-	else if(population.unemployed>0 && (population.apothecaries<population.miners/100 || population.apothecaries<population.labourers)){
+	else if(upgrade.masonry == 1 && population.unemployed>0 && (population.apothecaries<population.miners/100 || population.apothecaries<population.labourers)){
 		if(population.apothecaries>apothecary.total-Przyrost)
 			createBuilding(apothecary,Przyrost);
 		hire('apothecaries',Przyrost);
 	}
-	else if(population.clerics < 500000 && population.unemployed>0 && (population.clerics<population.miners*5 || population.clerics<population.labourers*10)){
+	else if(upgrade.masonry == 1 && population.clerics < 500000 && population.unemployed>0 && (population.clerics<population.miners*5 || population.clerics<population.labourers*10)){
 		if(population.clerics>temple.total-Przyrost)
 			createBuilding(temple,Przyrost);
 		hire('clerics',Przyrost);
