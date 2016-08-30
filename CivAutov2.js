@@ -44,7 +44,7 @@ function domki(){
 		else if(upgrades.architecture == 0 && wood.total >=30 && stone.total>=70)
 		createBuilding(house,Przyrost);
 		else if(upgrades.architecture == 1 && wood.total>=200 && stone.total>=200 & leather.total>=20)
-		createBuilding(mansony,Przyrost);
+		createBuilding(mansion,Przyrost);
 	}
 		
 }
