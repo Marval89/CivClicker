@@ -24,11 +24,13 @@ function obliczenia(){
 	FoodPrzyrost = 10;
 	else if(population.current < 1000)
 	FoodPrzyrost = 20;
-	else if (population.current < 10000)
+	else if(population.current < 5000)
 	FoodPrzyrost = population.current / 20;
-	else if (population.current <10000)
+	else if (population.current < 10000)
 	FoodPrzyrost = population.current / 10;
 	else if (population.current <100000)
+	FoodPrzyrost = population.current / 10;
+	else if (population.current <1000000)
 	FoodPrzyrost = population.current / 5;
 	else
 	FoodPrzyrost = population.current /2;
