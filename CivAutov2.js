@@ -19,7 +19,16 @@ function obliczenia(){
 	}
 	netWood2 = population.woodcutters * (efficiency.woodcutters * efficiency.happiness) * (1 + (wonder.wood/10));
 	netStone2 = population.miners * (efficiency.miners * efficiency.happiness) * (1 + (wonder.stone/10));
-	FoodPrzyrost = population.current / 2;
+	if(population.current < 200)
+	FoodPrzyrost = 10;
+	else if(population.current < 1000)
+	FoodPrzyrost = 20;
+	else if (population.current < 10000)
+	FoodPrzyrost = population.current / 10;
+	else if (population.current <10000)
+	FoodPrzyrost = population.current / 5;
+	else
+	FoodPrzyrost = population.current /2;
 	 freeLand = Math.max(land - totalBuildings, 0);
 }
 function domki(){
