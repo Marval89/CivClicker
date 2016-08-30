@@ -103,7 +103,7 @@ function mainLoop() {
 	ZatrudniajFarmerow();
 	Magazyny();
    	Zombie();
-     
+     	domki();
         
      
         
