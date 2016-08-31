@@ -29,9 +29,9 @@ function obliczenia(){
 	else if (population.current < 10000)
 	FoodPrzyrost = population.current / 10;
 	else if (population.current <100000)
-	FoodPrzyrost = population.current / 10;
-	else if (population.current <1000000)
 	FoodPrzyrost = population.current / 5;
+	else if (population.current <1000000)
+	FoodPrzyrost = population.current / 3;
 	else
 	FoodPrzyrost = population.current /2;
 	 freeLand = Math.max(land - totalBuildings, 0);
@@ -80,12 +80,12 @@ function ZatrudniajFarmerow(){
 		 	createBuilding(apothecary,Przyrost);
 		hire('apothecaries',Przyrost);
 	}
-	else if(upgrades.masonry == 1 && population.clerics < 500000 && population.unemployed>0 && (population.clerics<population.miners/5 || population.clerics<population.labourers*10)){
+	else if(upgrades.masonry == 1 && population.clerics < 500000 && population.unemployed>0 && (population.clerics<population.miners/2 || population.clerics<population.labourers*10)){
 		if(freeLand > TargetFreeLand && population.clerics>temple.total-Przyrost && wood.total>=30 && stone.total>=120 && herbs.total >=10)
 			createBuilding(temple,Przyrost);
 		hire('clerics',Przyrost);
 	}
-	else if(population.unemployed>0 && (population.woodcutters<=population.miners && population.woodcutters<=population.farmers/5 || population.woodcutters<population.labourers*50)){
+	else if(population.unemployed>0 && population.woodcutters<=population.miners && (population.woodcutters<=population.farmers/5 || population.woodcutters<population.labourers*50)){
 		hire('woodcutters',Przyrost);
 	}
 	else if(population.unemployed>0 && (population.miners<=population.woodcutters || population.miners<population.labourers*50)){
