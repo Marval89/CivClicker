@@ -127,13 +127,13 @@ function delayStartAgain(){
 }
 
 function mainLoop() {
-	obliczenia();
-	domki();
-	TworzPracownikow();
-	ZatrudniajFarmerow();
+	//obliczenia();
+	//domki();
+	//TworzPracownikow();
+	//ZatrudniajFarmerow();
 	Magazyny();
-   	if(document.getElementById('underworldUpgrades').style.display == "inline" && deity.devotion >=20) Zombie();
-    Walcz();    
+   //	if(document.getElementById('underworldUpgrades').style.display == "inline" && deity.devotion >=20) Zombie();
+   // Walcz();    
      
         
 }
