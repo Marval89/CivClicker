@@ -79,7 +79,7 @@ function ZatrudniajFarmerow(){
 		 	createBuilding(apothecary,Przyrost);
 		hire('apothecaries',Przyrost);
 	}
-	else if(upgrades.masonry == 1 && population.clerics < 500000 && population.unemployed>0 && (population.clerics<population.miners*2 || population.clerics<population.labourers*10)){
+	else if(upgrades.masonry == 1 && population.clerics < 1000000 && population.unemployed>0 && (population.clerics<population.miners*2 || population.clerics<population.labourers*10)){
 		if(freeLand > TargetFreeLand && population.clerics>temple.total-Przyrost && wood.total>=30*Przyrost && stone.total>=120*Przyrost && herbs.total >=10*Przyrost)
 			createBuilding(temple,Przyrost);
 		hire('clerics',Przyrost);
@@ -90,6 +90,8 @@ function ZatrudniajFarmerow(){
 	else if(population.unemployed>0 && (population.miners<=population.woodcutters || population.miners<population.labourers*50)){
 		hire('miners',Przyrost);
 	}
+	else if(population.unemployed>Przyrost && population.soldiers<population.current/3)
+	hire('soldiers',Przyrost);
 	else if(population.unemployed>Przyrost*20)
 		hire('farmers',Przyrost);
 		
@@ -112,8 +114,8 @@ function Magazyny(){
 function Walcz(){
 	if(document.getElementById('raidGroup').style.display == 'block' && population.soldiersParty>300000)
 		invade('largeNation');
-	
-
+	if(document.getElementById('victoryGroup').style.display == 'block')
+		plunder();
 }
 setTimeout(delayStart, startupDelay);
 function delayStart() {
@@ -130,8 +132,8 @@ function mainLoop() {
 	TworzPracownikow();
 	ZatrudniajFarmerow();
 	Magazyny();
-   	Zombie();
-        
+   	if(document.getElementById('underworldUpgrades').style.display == "inline" && deity.devotion >=20) Zombie();
+    Walcz();    
      
         
 }
