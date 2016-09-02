@@ -71,65 +71,59 @@ function domki(){
 		else if(upgrades.architecture == 1 && wood.total>=200*Przyrost && stone.total>=200*Przyrost && leather.total>=20*Przyrost)
 		createBuilding(mansion,Przyrost);
 	}
+	if(freeLand>TargetFreeLand && upgrades.masonry==1){
+		if(population.tanners>tannery.total-Przyrost && wood.total>=30*Przyrost && stone.total>=70*Przyrost)
+			createBuilding(tannery,Przyrost);
+		if(population.blacksmiths>smithy.total-Przyrost && wood.total>=30*Przyrost && stone.total>=70*Przyrost)
+			createBuilding(smithy,Przyrost);
+		if(population.apothecaries>apothecary.total-Przyrost && wood.total>=30*Przyrost && stone.total>=70*Przyrost && herbs.total >=2*Przyrost)
+		 	createBuilding(apothecary,Przyrost);
+		if(barracks.total <= (population.soldiers + population.soldiersIll + population.soldiersParty) && food.total>=20*Przyrost && wood.total>=60*Przyrost && stone.total>=120*Przyrost && metal.total>=10*Przyrost)
+			createBuilding(barracks,Przyrost);
+		if(population.clerics>temple.total-Przyrost && wood.total>=30*Przyrost && stone.total>=120*Przyrost && population.current<population.cap-Przyrost)
+			createBuilding(temple,Przyrost);
+	}
 		
 }
 function Zombie(){
 	if(document.getElementById('underworldUpgrades').style.display == "inline"){
-		if(deity.devotion<20 && population.corpses>=1*deity.devotion && stone.total>=200 && piety.total>=200)
+		if(deity.devotion<20 && population.corpses>=1+(1*deity.devotion) && stone.total>=200 && piety.total>=200)
 			createBuilding(underworldAltar,1)
 		if(piety.total>Przyrost*100 && population.corpses>Przyrost && deity.devotion >=20)
 			raiseDead(Przyrost);
 	}
 }
 function TworzPracownikow() {
-	if(netFood2>FoodPrzyrost-Przyrost*10)
+	if(netFood2>FoodPrzyrost-Przyrost*10 || population.unemployed<Przyrost)
 		spawn(Przyrost);
 	
 }
 function ZatrudniajFarmerow(){
 	var klerRatio;
 	if (document.getElementById('raiseDead').disabled == false)
-	klerRatio=0.5;
+	klerRatio=0.3;
 	else
 	klerRatio=25;
 
-	if(netFood2<=FoodPrzyrost || (population.unemployed>0 && population.farmers<population.labourers*150)){
-		if(population.unemployed<Przyrost)
-			spawn(Przyrost);
+	if(netFood2<=FoodPrzyrost || population.farmers<population.labourers*150)
 		hire('farmers',Przyrost);
-	}
-	else if(population.unemployed>0 && population.woodcutters<=population.miners && (population.woodcutters<=population.farmers/3 || population.woodcutters<population.labourers*60)){
-		hire('woodcutters',Przyrost);
-	}
-	else if(population.unemployed>0 && (population.miners<=population.woodcutters || population.miners<population.labourers*60) && (upgrades.masonry==0 || (population.tanners>population.miners/100 && population.blacksmiths>population.miners/100))){
-		hire('miners',Przyrost);
-	}
-	else if(upgrades.masonry==1 && population.unemployed>0 && (population.tanners<population.miners/25 || population.tanners<population.labourers*2) && skins.total >=2*Przyrost) {
-		if(freeLand > TargetFreeLand && population.tanners>tannery.total-Przyrost && wood.total>=30*Przyrost && stone.total>=70*Przyrost )
-			createBuilding(tannery,Przyrost);
+	else if((population.tanners<population.miners/25 || population.tanners<population.labourers*2) && population.tanners<=tannery.total-Przyrost)
 		hire('tanners',Przyrost);
-	}
-	else if(upgrades.masonry == 1 && population.unemployed>0 && (population.blacksmiths<population.miners/25 ||population.blacksmiths<population.labourers*2) && ore.total >=2*Przyrost){
-		if(freeLand > TargetFreeLand && population.blacksmiths>smithy.total-Przyrost && wood.total>=30*Przyrost && stone.total>=70*Przyrost)
-			createBuilding(smithy,Przyrost);
+	else if(population.blacksmiths<=smithy.total-Przyrost && (population.blacksmiths<population.miners/25 ||population.blacksmiths<population.labourers*2))
 		hire('blacksmiths',Przyrost);
-	}
-	else if(upgrades.masonry == 1 && population.unemployed>0 && (population.apothecaries<population.miners/100 || population.apothecaries<population.labourers)){
-		if(freeLand > TargetFreeLand && population.apothecaries>apothecary.total-Przyrost && wood.total>=30*Przyrost && stone.total>=70*Przyrost && herbs.total >=2*Przyrost)
-		 	createBuilding(apothecary,Przyrost);
+	else if(population.woodcutters<=population.miners && (population.woodcutters<=population.farmers/3 || population.woodcutters<population.labourers*60))
+		hire('woodcutters',Przyrost);
+	else if(population.miners<=population.woodcutters || population.miners<population.labourers*60)
+		hire('miners',Przyrost);
+	else if(population.apothecaries<=apothecary.total-Przyrost && (population.apothecaries<population.miners/100 || population.apothecaries<population.labourers))
 		hire('apothecaries',Przyrost);
-	}
-	else if(upgrades.masonry == 1 && population.clerics < ClericCap && population.unemployed>0 && (population.clerics<population.miners/klerRatio || population.clerics<population.labourers*1) && herbs.total >=10*Przyrost){
-		if(freeLand > TargetFreeLand && population.clerics>temple.total-Przyrost && wood.total>=30*Przyrost && stone.total>=120*Przyrost)
-			createBuilding(temple,Przyrost);
-		hire('clerics',Przyrost);
-	}
-	else if(upgrades.masonry == 1 && population.unemployed>Przyrost && population.soldiers<population.current/20 && (upgrades.standard == 1 || population.soldiers<population.current/100) && metal.total>10*Przyrost && leather.total > 10*Przyrost ){
-		if(freeLand > TargetFreeLand && barracks.total <= (population.soldiers + population.soldiersIll + population.soldiersParty) && food.total>=20*Przyrost && wood.total>=60*Przyrost && stone.total>=120*Przyrost && metal.total>=10*Przyrost)
-			createBuilding(barracks,Przyrost);
+	else if((population.soldiers + population.soldiersIll + population.soldiersParty)<=barracks.total-Przyrost && population.soldiers<population.current/20 && (upgrades.standard == 1 || population.soldiers<population.current/100))
 		hire('soldiers',Przyrost);
-	}
-	else if(population.unemployed>Przyrost*20)
+	else if(population.clerics<=temple.total-Przyrost && population.clerics < ClericCap && (population.clerics<population.miners/klerRatio || population.clerics<population.labourers*1))
+		hire('clerics',Przyrost);
+	else if(population.labourers > 0 && population.labourers < ludnosc/450)
+		hire('labourers',Przyrost);
+	 if(population.unemployed>Przyrost*20)
 		hire('farmers',Przyrost);
 		
 }
@@ -158,7 +152,9 @@ function Magazyny(){
 function Walcz(){
 if(freeLand<=TargetFreeLand || (document.getElementById('underworldUpgrades').style.display == "inline" && deity.devotion >=20 && population.corpses <= Przyrost)){	
 	if(document.getElementById('raidGroup').style.display == 'block') 
-		if(population.soldiersParty>300000)
+		if(population.soldiersParty>600000)
+			invade('empire');
+		else if(population.soldiersParty>300000)
 			invade('largeNation');
 		else if(population.soldiersParty>150000)
 			invade('nation');
@@ -178,13 +174,13 @@ if(freeLand<=TargetFreeLand || (document.getElementById('underworldUpgrades').st
 			invade('village');
 		else if (population.soldiersParty>50)
 			invade('hamlet')
-		else if (population.soldiersParty>20)
+		else if (population.soldiersParty>20) 
 			invade('thorp');
 }			
 		
 	if(document.getElementById('victoryGroup').style.display == 'block')
 		plunder();
-	if(document.getElementById('raidGroup').style.display == 'block' && population.soldiers>=population.current/20 && population.soldiersParty<ludnosc/25)
+	if(population.soldiers>=population.current/20 && population.soldiersParty<ludnosc/25 && population.soldiersParty<700000)
 		party('soldiers',Przyrost);
 }
 
@@ -217,9 +213,9 @@ function Ulepszenia(){
 	upgrade('tenements');
 	if(upgrades.granaries == 0 && wood.total >=1000 && stone.total >= 1000)
 	upgrade('granaries');
-	if(upgrades.macerating == 0 && leather.total >= 500 && stone.total >= 500)
+	if(!document.getElementById('macerating').disabled)
 	upgrade('macerating');
-	if(document.getElementById('flensingLine').style.display == "inline" && document.getElementById('flensing').disabled == false)
+	if(!document.getElementById('flensing').disabled)
 	upgrade('flensing');
 	if(upgrades.croprotation == 0 && herbs.total>=5000 && piety.total >= 1000)
 	upgrade('croprotation');
@@ -267,18 +263,19 @@ function delayStartAgain(){
 }
 
 function mainLoop() {
+	if(restart==0) menu();
 	obliczenia();
 	klikanie()
 	domki();
 	TworzPracownikow();
-	ZatrudniajFarmerow();
+	if (population.unemployed >= Przyrost) ZatrudniajFarmerow();
 	Magazyny();
 	Ulepszenia();
    	Zombie(); 
 	Walcz();  
 	if (document.getElementById('tradeContainer').style.display == 'block' && trader.material != food && trader.material.total >= trader.requested)  trade();
     if (document.getElementById('speedWonderGroup').style.display == 'block' && gold.total > 100) speedWonder();  
-    if(restart==0) menu();
+    
     
         
 }
