@@ -193,8 +193,8 @@ if(freeLand<=TargetFreeLand || (document.getElementById('underworldUpgrades').st
 	if(population.soldiers>=population.current/40 && (population.soldiersParty<ludnosc/60 || population.soldiersParty<population.zombies/15) && population.soldiersParty<900000)
 		party('soldiers',Przyrost);
 	if(freeLand<=TargetFreeLand && population.soldiersParty<20 && population.soldiers > 20)
-		party('soldiers',20);
-	if(upgrades.mathematics==1 && population.siege < population.soldiersParty/4)
+		party('soldiers',20); 
+	if(upgrades.mathematics==1 && population.siege < population.soldiersParty/4 && metal.total >= 50*Przyrost && leather.total >= 50*Przyrost && wood.total >=200*Przyrost)
 		party('siege',Przyrost);
 }
 
