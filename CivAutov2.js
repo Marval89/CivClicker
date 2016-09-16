@@ -79,15 +79,15 @@ function domki(){
 		createBuilding(mansion,Przyrost);
 	}
 	if(freeLand>TargetFreeLand && upgrades.masonry==1){
-		if(population.tanners>tannery.total-Przyrost && wood.total>=30*Przyrost && stone.total>=70*Przyrost)
+		if(population.tanners>tannery.total-Przyrost && wood.total>=30*Przyrost && stone.total>=70*Przyrost && skins.total>=2*Przyrost)
 			createBuilding(tannery,Przyrost);
-		if(population.blacksmiths>smithy.total-Przyrost && wood.total>=30*Przyrost && stone.total>=70*Przyrost)
+		if(population.blacksmiths>smithy.total-Przyrost && wood.total>=30*Przyrost && stone.total>=70*Przyrost && ore.total>=2*Przyrost)
 			createBuilding(smithy,Przyrost);
 		if(population.apothecaries>apothecary.total-Przyrost && wood.total>=30*Przyrost && stone.total>=70*Przyrost && herbs.total >=2*Przyrost)
 		 	createBuilding(apothecary,Przyrost);
 		if((population.soldiers + population.soldiersIll + population.soldiersParty)>barracks.total-Przyrost && food.total>=20*Przyrost && wood.total>=60*Przyrost && stone.total>=120*Przyrost && metal.total>=10*Przyrost)
 			createBuilding(barracks,Przyrost);
-		if(population.clerics>temple.total-Przyrost && wood.total>=30*Przyrost && stone.total>=120*Przyrost && population.current<population.cap-Przyrost)
+		if(population.clerics>temple.total-Przyrost && wood.total>=30*Przyrost && stone.total>=120*Przyrost && herbs.total >=10*Przyrost && population.current<population.cap-Przyrost)
 			createBuilding(temple,Przyrost);
 	}
 		
@@ -119,9 +119,9 @@ function ZatrudniajFarmerow(){
 		hire('tanners',Przyrost);
 	 if(population.blacksmiths<=smithy.total-Przyrost && (population.blacksmiths<population.miners/25 ||population.blacksmiths<population.labourers*2))
 		hire('blacksmiths',Przyrost);
-	 if(population.woodcutters<=population.miners && (population.woodcutters<=population.farmers/4 || population.woodcutters<population.labourers*60))
+	 if(population.woodcutters<=population.miners && (population.woodcutters<=population.farmers/3 || population.woodcutters<population.labourers*60))
 		hire('woodcutters',Przyrost);
-	 if(population.miners<=population.woodcutters*2 || population.miners<population.labourers*60)
+	 if(population.miners<=population.farmers/2 || population.miners<population.labourers*60)
 		hire('miners',Przyrost);
 	 if(population.apothecaries<=apothecary.total-Przyrost && (population.apothecaries<population.miners/100 || population.apothecaries<population.labourers))
 		hire('apothecaries',Przyrost);
@@ -129,7 +129,7 @@ function ZatrudniajFarmerow(){
 		hire('soldiers',Przyrost);
 	 if(population.clerics<=temple.total-Przyrost && (population.clerics < 10000 || (graveyard.total>=1000 && population.clerics < ClericCap)) && (population.clerics<population.miners/klerRatio || population.clerics<population.labourers*1))
 		hire('clerics',Przyrost);
-	 if(population.labourers > 0 && population.labourers < ludnosc/450)
+	 if((population.labourers > 0 || population.current + population.zombies > 3000000) && population.labourers < ludnosc/450)
 		hire('labourers',100);
 	 if(population.unemployed>Przyrost*20)
 		hire('farmers',Przyrost);
@@ -304,6 +304,7 @@ function mainLoop() {
 	Walcz();  
 	if (document.getElementById('tradeContainer').style.display == 'block' && trader.material != food && trader.material.total >= trader.requested)  trade();
     if (document.getElementById('speedWonderGroup').style.display == 'block' && gold.total > 100) speedWonder();  
+    if (!document.getElementById('startWonder').disabled) startWonder(); 
     
     
         
