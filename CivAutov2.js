@@ -270,6 +270,7 @@ function Ulepszenia(){
 	if(document.getElementById('commerceLine').style.display == "inline" && gold.total>=100 && piety.total>=10000)
 	upgrade('commerce');
 
+
 }
 function klikanie(){
 	if((netFood2 < 20 && food.total<20) || (skins.total<10)) 
@@ -281,6 +282,18 @@ function klikanie(){
     if(document.getElementById('catsUpgrades').style.display == "inline" && deity.devotion >=20 && pestTimer==0)
     	pestControl(10);
      
+}
+function wyznanie(){
+if(document.getElementById('deityLine').style.display == "inline" && piety.total >= 1000){
+		upgrades.deity = 1;
+		piety.total -= 1000;
+		deity.name = 'Hades';
+		document.getElementById('renameDeity').disabled = false;
+		document.getElementById('deitySpecialisation').style.display = "inline";
+		updateDeity();
+		}
+if(document.getElementById('deitySpecialisation').style.display = "inline" && piety.total >= 500)
+		upgrade('deityUnderworld');
 }
 setTimeout(delayStart, startupDelay);
 function delayStart() {
@@ -301,7 +314,8 @@ function mainLoop() {
 	Magazyny();
 	Ulepszenia();
    	Zombie(); 
-	Walcz();  
+	Walcz();
+	wyznanie();  
 	if (document.getElementById('tradeContainer').style.display == 'block' && trader.material != food && trader.material.total >= trader.requested)  trade();
     if (document.getElementById('speedWonderGroup').style.display == 'block' && gold.total > 100) speedWonder();  
     if (!document.getElementById('startWonder').disabled) startWonder(); 
