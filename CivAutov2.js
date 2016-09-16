@@ -292,7 +292,7 @@ if(document.getElementById('deityLine').style.display == "inline" && piety.total
 		document.getElementById('deitySpecialisation').style.display = "inline";
 		updateDeity();
 		}
-if(document.getElementById('deitySpecialisation').style.display = "inline" && piety.total >= 500)
+if(document.getElementById('deitySpecialisation').style.display == "inline" && piety.total >= 500)
 		upgrade('deityUnderworld');
 }
 setTimeout(delayStart, startupDelay);
@@ -318,8 +318,14 @@ function mainLoop() {
 	wyznanie();  
 	if (document.getElementById('tradeContainer').style.display == 'block' && trader.material != food && trader.material.total >= trader.requested)  trade();
     if (document.getElementById('speedWonderGroup').style.display == 'block' && gold.total > 100) speedWonder();  
-    if (!document.getElementById('startWonder').disabled) startWonder(); 
-    
+    if (!document.getElementById('startWonder').disabled && !wonder.completed && !wonder.building) 
+    {
+    	wonder.name='Sphinks';
+		document.getElementById('startWonder').disabled = true;
+		document.getElementById('speedWonderGroup').style.display = 'block';
+		wonder.building = true;
+		updateWonder();
+    	}
     
         
 }
