@@ -94,9 +94,13 @@ function domki(){
 }
 function Zombie(){
 	if(document.getElementById('underworldUpgrades').style.display == "inline"){
-		if(deity.devotion<20 && population.corpses>=1+(1*deity.devotion) && stone.total>=200 && piety.total>=200)
+		if(deity.devotion<50 && population.corpses>=1+(1*deity.devotion) && stone.total>=200 && piety.total>=200)
 			createBuilding(underworldAltar,1)
-		if(piety.total>Przyrost*100 && population.corpses>Przyrost && deity.devotion >=20)
+		if(upgrades.feast == 0 && piety.total>1000 && diety.devotion >=30)
+			upgrade('feast');
+		if(upgrades.secrets == 0 && piety.total>5000 && diety.devotion >=50)
+			upgrade('secrets');
+		if(upgrades.secrets == 1 && piety.total>Przyrost*100 && population.corpses>Przyrost && deity.devotion >=20)
 			//raiseDead(Przyrost);
 			raiseDead('max');
 	}
