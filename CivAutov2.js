@@ -115,6 +115,8 @@ function ZatrudniajFarmerow(){
 
 	if(netFood2<=FoodPrzyrost || population.farmers<population.labourers*150)
 		hire('farmers',Przyrost);
+	if(population.clerics<=temple.total-Przyrost && (population.clerics < 10000 || (graveyard.total>=1000 && population.clerics < ClericCap)) && (population.clerics<population.miners/klerRatio || population.clerics<population.labourers*1))
+		hire('clerics',Przyrost);
 	if((population.soldiers + population.soldiersIll + population.soldiersParty)<=barracks.total-Przyrost || barracks.total-Przyrost<0  && (population.soldiers<population.current/40 && (upgrades.standard == 1 || population.soldiers<population.current/100)))
 		hire('soldiers',Przyrost);
     if((population.tanners<population.miners/50 || population.tanners<population.labourers*2) && population.tanners<=tannery.total-Przyrost)
@@ -127,8 +129,7 @@ function ZatrudniajFarmerow(){
 		hire('miners',Przyrost);
 	 if(population.apothecaries<=apothecary.total-Przyrost && (population.apothecaries<population.miners/100 || population.apothecaries<population.labourers))
 		hire('apothecaries',Przyrost);
-	 if(population.clerics<=temple.total-Przyrost && (population.clerics < 10000 || (graveyard.total>=1000 && population.clerics < ClericCap)) && (population.clerics<population.miners/klerRatio || population.clerics<population.labourers*1))
-		hire('clerics',Przyrost);
+	 
 	 if((population.labourers > 0 || population.current + population.zombies > 3000000) && population.labourers < ludnosc/450)
 		hire('labourers',100);
 	 if(population.unemployed>Przyrost*20)
