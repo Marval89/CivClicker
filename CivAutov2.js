@@ -115,7 +115,7 @@ function ZatrudniajFarmerow(){
 
 	if(netFood2<=FoodPrzyrost || population.farmers<population.labourers*150)
 		hire('farmers',Przyrost);
-	if((population.soldiers + population.soldiersIll + population.soldiersParty)<=barracks.total-Przyrost && population.soldiers<population.current/40 && (upgrades.standard == 1 || population.soldiers<population.current/100))
+	if((population.soldiers + population.soldiersIll + population.soldiersParty)<=barracks.total-Przyrost || barracks.total-Przyrost<0  && (population.soldiers<population.current/40 && (upgrades.standard == 1 || population.soldiers<population.current/100)))
 		hire('soldiers',Przyrost);
     if((population.tanners<population.miners/50 || population.tanners<population.labourers*2) && population.tanners<=tannery.total-Przyrost)
 		hire('tanners',Przyrost);
