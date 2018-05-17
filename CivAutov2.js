@@ -162,7 +162,7 @@ function Magazyny(){
 	
 }
 function Walcz(){
-if(freeLand<=TargetFreeLand || (document.getElementById('underworldUpgrades').style.display == "inline" && population.corpses <= Przyrost)){	
+if(upgrades.standard == 1 && (freeLand<=TargetFreeLand || (document.getElementById('underworldUpgrades').style.display == "inline" && population.corpses <= Przyrost))){	
 	if(document.getElementById('raidGroup').style.display == 'block') 
 		if(population.soldiersParty>600000)
 			invade('empire');
