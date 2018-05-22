@@ -255,40 +255,37 @@ function Ulepszenia(){
 		if(upgrades.palisade == 0 && wood.total >= 2000 && stone.total >= 1000)
 			upgrade('palisade');
 	}
-/*	if(document.getElementById('maceratingLine').style.display == "inline" && !document.getElementById('macerating').disabled)
-	upgrade('macerating');
-	if(document.getElementById('administrationLine').style.display == "inline" && !document.getElementById('administration').disabled)
-	upgrade('administration');
-	if(document.getElementById('codeoflawsLine').style.display == "inline" && !document.getElementById('codeoflaws').disabled)
-	upgrade('codeoflaws');
-	if(document.getElementById('flensingLine').style.display == "inline" && !document.getElementById('flensing').disabled)
-	upgrade('flensing');
-	if(document.getElementById('mathematicsLine').style.display == "inline" && !document.getElementById('mathematics').disabled)
-	upgrade('mathematics');
-	if(document.getElementById('aestheticsLine').style.display == "inline" && !document.getElementById('aesthetics').disabled)
-	upgrade('aesthetics');
-	if(upgrades.croprotation == 0 && herbs.total>=5000 && piety.total >= 1000)
-	upgrade('croprotation');
-	if(upgrades.selectivebreeding == 0 && skins.total>=5000 && piety.total >= 1000)
-	upgrade('selectivebreeding');
-	if(upgrades.fertilisers == 0 && ore.total>=5000 && piety.total >= 1000)
-	upgrade('fertilisers');
-	if(upgrades.slums == 0 && food.total>=500 && wood.total >= 1000 && stone.total >= 1000)
-	upgrade('slums');
-	
-	
-
-	
-	if(upgrades.administration == 0 && stone.total >= 0 && skins.total >= 0 && upgrades.standard == 1)
-	upgrade('administration');
+	if(upgrades.architecture == 1){
+		if(document.getElementById('maceratingLine').style.display == "inline" && !document.getElementById('macerating').disabled)
+			upgrade('macerating');
+		if(document.getElementById('flensingLine').style.display == "inline" && !document.getElementById('flensing').disabled)
+			upgrade('flensing');
+		if(upgrades.croprotation == 0 && herbs.total>=5000 && piety.total >= 1000)
+			upgrade('croprotation');
+		if(upgrades.fertilisers == 0 && ore.total>=5000 && piety.total >= 1000)
+			upgrade('fertilisers');
+		if(upgrades.slums == 0 && food.total>=500 && wood.total >= 1000 && stone.total >= 1000)
+			upgrade('slums');
+	}
+	if(upgrades.writing == 1){
+		if(document.getElementById('administrationLine').style.display == "inline" && !document.getElementById('administration').disabled)
+			upgrade('administration');
+		if(document.getElementById('codeoflawsLine').style.display == "inline" && !document.getElementById('codeoflaws').disabled)
+			upgrade('codeoflaws');	
+		if(document.getElementById('mathematicsLine').style.display == "inline" && !document.getElementById('mathematics').disabled)
+			upgrade('mathematics');
+		if(document.getElementById('aestheticsLine').style.display == "inline" && !document.getElementById('aesthetics').disabled)
+			upgrade('aesthetics');
+		if(upgrades.selectivebreeding == 0 && skins.total>=5000 && piety.total >= 1000)
+			upgrade('selectivebreeding');
+	}
+			
 	if(document.getElementById('tradeLine').style.display == "inline" && gold.total>=1)
 	upgrade('trade');
 	if(document.getElementById('currencyLine').style.display == "inline" && gold.total>=10 && ore.total>=1000)
 	upgrade('currency');
 	if(document.getElementById('commerceLine').style.display == "inline" && gold.total>=100 && piety.total>=10000)
 	upgrade('commerce');
-
-*/
 }
 function klikanie(){
 	if((netFood2 < 20 && food.total<20) || (skins.total<10)) 
