@@ -131,7 +131,7 @@ function ZatrudniajFarmerow(){
 		hire('tanners',Przyrost);
 	 if(population.blacksmiths<=smithy.total-Przyrost && (population.blacksmiths<population.miners/25 ||population.blacksmiths<population.labourers*2))
 		hire('blacksmiths',Przyrost);
-	 if(population.woodcutters<=population.miners && (population.woodcutters<=population.farmers/3 || population.woodcutters<population.labourers*60))
+	 if(population.woodcutters<=population.miners && (population.woodcutters<=population.farmers/3 || population.woodcutters<population.labourers*80))
 		hire('woodcutters',Przyrost);
 	 if(population.miners<=(population.current + population.zombies)/6 || population.miners<population.labourers*60)
 		hire('miners',Przyrost);
