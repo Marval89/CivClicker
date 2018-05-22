@@ -144,6 +144,7 @@ function ZatrudniajFarmerow(){
 		
 }
 
+
 function Magazyny(){
 	if(upgrades.granaries==1)
 	maxFoodA = Math.round(barn.total*400);
