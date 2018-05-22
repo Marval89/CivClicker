@@ -215,15 +215,31 @@ function Ulepszenia(){
 	upgrade('prospecting');
 	if(upgrades.masonry == 0 && wood.total >= 100 && stone.total >=100)
 	upgrade('masonry');
-/*	if(upgrades.domestication == 0 && leather.total >=20)
-	upgrade('domestication');
-	if(upgrades.ploughshares == 0 && metal.total >= 20)
-	upgrade('ploughshares');
-	if(upgrades.irrigation == 0 && stone.total >= 200 && wood.total >= 500)
-	upgrade('irrigation');
-	if(upgrades.construction == 0 && wood.total >= 1000 && stone.total >= 1000)
-	upgrade('construction');
-	if(upgrades.butchering == 0 && leather.total >= 40)
+	if(upgrades.masonry ==1){
+		if(upgrades.domestication == 0 && leather.total >=20)
+		upgrade('domestication');
+		if(upgrades.ploughshares == 0 && metal.total >= 20)
+		upgrade('ploughshares');
+		if(upgrades.irrigation == 0 && stone.total >= 200 && wood.total >= 500)
+		upgrade('irrigation');
+		if(upgrades.construction == 0 && wood.total >= 1000 && stone.total >= 1000)
+		upgrade('construction');
+		if(upgrades.granaries == 0 && wood.total >=1000 && stone.total >= 1000)
+		upgrade('granaries');
+		if(upgrades.weaponry == 0 && wood.total >= 500 && metal.total >= 500)
+		upgrade('weaponry');
+		if(upgrades.shields == 0 && wood.total >= 500 && leather.total >= 500)
+		upgrade('shields');
+		if(upgrades.horseback == 0 && food.total >= 500 && wood.total >= 500)
+		upgrade('horseback');
+		if(upgrades.wheel == 0 && wood.total >= 500 && stone.total >= 500)
+		upgrade('wheel');
+		if(upgrades.standard == 0 && metal.total >=1000 && leather.total >= 1000)
+		upgrade('standard');
+		if(upgrades.writing == 0 && population.clerics > 0 && skins.total >= 500)
+		upgrade('writing');
+	}
+/*	if(upgrades.butchering == 0 && leather.total >= 40)
 	upgrade('butchering');
 	if(upgrades.gardening == 0 && herbs.total >= 40)
 	upgrade('gardening');
@@ -233,8 +249,7 @@ function Ulepszenia(){
 	upgrade('architecture');
 	if(upgrades.tenements == 0 && food.total >=200 && wood.total >= 500 && stone.total >= 500)
 	upgrade('tenements');
-	if(upgrades.granaries == 0 && wood.total >=1000 && stone.total >= 1000)
-	upgrade('granaries');
+
 	if(document.getElementById('maceratingLine').style.display == "inline" && !document.getElementById('macerating').disabled)
 	upgrade('macerating');
 	if(document.getElementById('administrationLine').style.display == "inline" && !document.getElementById('administration').disabled)
@@ -257,18 +272,9 @@ function Ulepszenia(){
 	upgrade('slums');
 	if(upgrades.palisade == 0 && wood.total >= 2000 && stone.total >= 1000)
 	upgrade('palisade');	
-	if(upgrades.weaponry == 0 && wood.total >= 500 && metal.total >= 500)
-	upgrade('weaponry');
-	if(upgrades.shields == 0 && wood.total >= 500 && leather.total >= 500)
-	upgrade('shields');
-	if(upgrades.horseback == 0 && food.total >= 500 && wood.total >= 500)
-	upgrade('horseback');
-	if(upgrades.wheel == 0 && wood.total >= 500 && stone.total >= 500)
-	upgrade('wheel');
-	if(upgrades.standard == 0 && metal.total >=1000 && leather.total >= 1000)
-	upgrade('standard');
-	if(upgrades.writing == 0 && population.clerics > 0 && skins.total >= 500)
-	upgrade('writing');
+	
+
+	
 	if(upgrades.administration == 0 && stone.total >= 0 && skins.total >= 0 && upgrades.standard == 1)
 	upgrade('administration');
 	if(document.getElementById('tradeLine').style.display == "inline" && gold.total>=1)
