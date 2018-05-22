@@ -217,40 +217,45 @@ function Ulepszenia(){
 	upgrade('masonry');
 	if(upgrades.masonry ==1){
 		if(upgrades.domestication == 0 && leather.total >=20)
-		upgrade('domestication');
+			upgrade('domestication');
 		if(upgrades.ploughshares == 0 && metal.total >= 20)
-		upgrade('ploughshares');
+			upgrade('ploughshares');
 		if(upgrades.irrigation == 0 && stone.total >= 200 && wood.total >= 500)
-		upgrade('irrigation');
+			upgrade('irrigation');
 		if(upgrades.construction == 0 && wood.total >= 1000 && stone.total >= 1000)
-		upgrade('construction');
+			upgrade('construction');
 		if(upgrades.granaries == 0 && wood.total >=1000 && stone.total >= 1000)
-		upgrade('granaries');
-		if(upgrades.weaponry == 0 && wood.total >= 500 && metal.total >= 500)
-		upgrade('weaponry');
-		if(upgrades.shields == 0 && wood.total >= 500 && leather.total >= 500)
-		upgrade('shields');
-		if(upgrades.horseback == 0 && food.total >= 500 && wood.total >= 500)
-		upgrade('horseback');
+			upgrade('granaries');
 		if(upgrades.wheel == 0 && wood.total >= 500 && stone.total >= 500)
-		upgrade('wheel');
+			upgrade('wheel');
 		if(upgrades.standard == 0 && metal.total >=1000 && leather.total >= 1000)
-		upgrade('standard');
+			upgrade('standard');
 		if(upgrades.writing == 0 && population.clerics > 0 && skins.total >= 500)
-		upgrade('writing');
+			upgrade('writing');
 	}
-/*	if(upgrades.butchering == 0 && leather.total >= 40)
-	upgrade('butchering');
-	if(upgrades.gardening == 0 && herbs.total >= 40)
-	upgrade('gardening');
-	if(upgrades.extraction == 0 && metal.total >=40)
-	upgrade('extraction');
-	if(upgrades.architecture == 0 && wood.total >= 10000 && stone.total >= 10000)
-	upgrade('architecture');
-	if(upgrades.tenements == 0 && food.total >=200 && wood.total >= 500 && stone.total >= 500)
-	upgrade('tenements');
-
-	if(document.getElementById('maceratingLine').style.display == "inline" && !document.getElementById('macerating').disabled)
+	if(upgrades.standard == 1){
+		if(upgrades.weaponry == 0 && wood.total >= 500 && metal.total >= 500)
+			upgrade('weaponry');
+		if(upgrades.shields == 0 && wood.total >= 500 && leather.total >= 500)
+			upgrade('shields');
+		if(upgrades.horseback == 0 && food.total >= 500 && wood.total >= 500)
+			upgrade('horseback');
+	}
+	if(upgrades.construction == 1){	
+		if(upgrades.butchering == 0 && leather.total >= 40)
+			upgrade('butchering');
+		if(upgrades.gardening == 0 && herbs.total >= 40)
+			upgrade('gardening');
+		if(upgrades.extraction == 0 && metal.total >=40)
+			upgrade('extraction');
+		if(upgrades.architecture == 0 && wood.total >= 10000 && stone.total >= 10000)
+			upgrade('architecture');
+		if(upgrades.tenements == 0 && food.total >=200 && wood.total >= 500 && stone.total >= 500)
+			upgrade('tenements');
+		if(upgrades.palisade == 0 && wood.total >= 2000 && stone.total >= 1000)
+			upgrade('palisade');
+	}
+/*	if(document.getElementById('maceratingLine').style.display == "inline" && !document.getElementById('macerating').disabled)
 	upgrade('macerating');
 	if(document.getElementById('administrationLine').style.display == "inline" && !document.getElementById('administration').disabled)
 	upgrade('administration');
@@ -270,8 +275,7 @@ function Ulepszenia(){
 	upgrade('fertilisers');
 	if(upgrades.slums == 0 && food.total>=500 && wood.total >= 1000 && stone.total >= 1000)
 	upgrade('slums');
-	if(upgrades.palisade == 0 && wood.total >= 2000 && stone.total >= 1000)
-	upgrade('palisade');	
+	
 	
 
 	
