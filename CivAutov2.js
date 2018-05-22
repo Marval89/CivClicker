@@ -207,13 +207,13 @@ if(upgrades.standard == 1 && (freeLand<=TargetFreeLand || (document.getElementBy
 }
 
 function Ulepszenia(){
-/*	if(upgrades.skinning == 0 && skins.total >= 10)
+	if(upgrades.skinning == 0 && skins.total >= 10)
 	upgrade('skinning');
 	if(upgrades.harvesting == 0 && herbs.total >= 10)
 	upgrade('harvesting');
 	if(upgrades.prospecting == 0 && ore.total >= 10)
 	upgrade('prospecting');
-	if(upgrades.masonry == 0 && wood.total >= 100 && stone.total >=100)
+/*	if(upgrades.masonry == 0 && wood.total >= 100 && stone.total >=100)
 	upgrade('masonry');
 	if(upgrades.domestication == 0 && leather.total >=20)
 	upgrade('domestication');
