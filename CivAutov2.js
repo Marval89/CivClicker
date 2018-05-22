@@ -207,7 +207,7 @@ if(upgrades.standard == 1 && (freeLand<=TargetFreeLand || (document.getElementBy
 }
 
 function Ulepszenia(){
-	if(upgrades.skinning == 0 && skins.total >= 10)
+/*	if(upgrades.skinning == 0 && skins.total >= 10)
 	upgrade('skinning');
 	if(upgrades.harvesting == 0 && herbs.total >= 10)
 	upgrade('harvesting');
@@ -278,7 +278,7 @@ function Ulepszenia(){
 	if(document.getElementById('commerceLine').style.display == "inline" && gold.total>=100 && piety.total>=10000)
 	upgrade('commerce');
 
-
+*/
 }
 function klikanie(){
 	if((netFood2 < 20 && food.total<20) || (skins.total<10)) 
