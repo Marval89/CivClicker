@@ -299,17 +299,12 @@ function klikanie(){
      
 }
 function wyznanie(){
-if(document.getElementById('deityLine').style.display == "inline" && piety.total >= 1000){
-		upgrades.deity = 1;
-		piety.total -= 1000;
-		deity.name = 'Hades';
-		document.getElementById('renameDeity').disabled = false;
-		document.getElementById('deitySpecialisation').style.display = "inline";
-		updateDeity();
-		}
-if(document.getElementById('deitySpecialisation').style.display == "inline" && piety.total >= 500)
+	if(upgrades.deity == 0 && piety.total >= 1000){
+		upgrade('deity')
+	}
+	if(upgrades.deity == 1 && upgrades.deityType == 0 && piety.total >= 500)
 		upgrade('deityUnderworld');
-}
+	}
 setTimeout(delayStart, startupDelay);
 function delayStart() {
     setTimeout(delayStartAgain, startupDelay);
