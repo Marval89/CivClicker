@@ -340,6 +340,5 @@ function mainLoop() {
 		wonder.building = true;
 		updateWonder();
     	}
-    
-        
+         
 }
