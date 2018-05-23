@@ -19,7 +19,7 @@ function menu(){
 	Row = document.createElement('tr');                                   // stworzenie wiersza                                                                                                                                                 // creates the button row inside the table
 Row.innerHTML = '<td class="number">Przyrost:</td>' + '<td class="number" id="PrzyrostView">'+Przyrost+'</td>';
 Row2 = document.createElement('tr');						
-Row2.innerHTML = '<td class="number">Clerics Cap:</td>' + '<td><input id="ClericsEdit" type="number" min="1" step="1" value="20000000"></td>' ;
+Row2.innerHTML = '<td class="number">Clerics Cap:</td>' + '<td><input id="ClericsEdit" type="number" min="1" step="1" value="18000000"></td>' ;
 		el = document.getElementById('populationNumbers'); //miejsce wklejenia
 		el.appendChild(Row);  
 		el.appendChild(Row2);  
