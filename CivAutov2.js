@@ -110,7 +110,7 @@ function Zombie(){
 	}
 }
 function TworzPracownikow() {
-	if(netFood2>FoodPrzyrost-Przyrost*10 || population.unemployed<Przyrost && calcCost(Przyrost)<food.total)
+	if((netFood2>FoodPrzyrost-Przyrost*10 || population.unemployed<Przyrost && calcCost(Przyrost)<food.total) && population.zombies < 1000000)
 		spawn(Przyrost);
 	
 }
