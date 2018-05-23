@@ -52,6 +52,8 @@ function obliczenia(){
 	FoodPrzyrost = 10;
 	else if(population.current < 1000)
 	FoodPrzyrost = 40;
+	else if (population.zombies > 100000)
+	FoodPrzyrost = 100;
 	else if(population.current < 5000)
 	FoodPrzyrost = population.current / 20;
 	else if (population.current < 10000)
@@ -60,8 +62,7 @@ function obliczenia(){
 	FoodPrzyrost = population.current / 3;
 	else if (population.current <100000)
 	FoodPrzyrost = population.current / 2;
-	else if (population.zombies > 100000)
-		 FoodPrzyrost = 100;
+
 	else
 	FoodPrzyrost = population.current / 2;
 	 freeLand = Math.max(land - totalBuildings, 0);
@@ -201,7 +202,7 @@ if(upgrades.standard == 1 && (freeLand<=TargetFreeLand || (document.getElementBy
 		
 	if(document.getElementById('victoryGroup').style.display == 'block')
 		plunder();
-	if(population.soldiers>=population.current/40 && (population.soldiersParty<ludnosc/60 || population.soldiersParty<population.zombies/15) && population.soldiersParty<900000)
+	if(population.soldiers>=ludnosc/40 && (population.soldiersParty<ludnosc/60 || population.soldiersParty<population.zombies/15) && population.soldiersParty<900000)
 		party('soldiers',Przyrost);
 	if(freeLand<=TargetFreeLand && population.soldiersParty<20 && population.soldiers > 20)
 		party('soldiers',20); 
