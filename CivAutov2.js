@@ -19,7 +19,7 @@ function menu(){
 	Row = document.createElement('tr');                                   // stworzenie wiersza                                                                                                                                                 // creates the button row inside the table
 Row.innerHTML = '<td class="number">Przyrost:</td>' + '<td class="number" id="PrzyrostView">'+Przyrost+'</td>';
 Row2 = document.createElement('tr');						
-Row2.innerHTML = '<td class="number">Clerics Cap:</td>' + '<td><input id="ClericsEdit" type="number" min="1" step="1" value="18000000"></td>' ;
+Row2.innerHTML = '<td class="number">Clerics Cap:</td>' + '<td><input id="ClericsEdit" type="number" min="1" step="1" value="30000000"></td>' ;
 		el = document.getElementById('populationNumbers'); //miejsce wklejenia
 		el.appendChild(Row);  
 		el.appendChild(Row2);  
@@ -62,7 +62,6 @@ function obliczenia(){
 	FoodPrzyrost = population.current / 3;
 	else if (population.current <100000)
 	FoodPrzyrost = population.current / 2;
-
 	else
 	FoodPrzyrost = population.current / 2;
 	 freeLand = Math.max(land - totalBuildings, 0);
@@ -111,7 +110,7 @@ function Zombie(){
 	}
 }
 function TworzPracownikow() {
-	if((netFood2>FoodPrzyrost-Przyrost*10 || population.unemployed<Przyrost) && calcCost(Przyrost)<food.total)
+	if(netFood2>FoodPrzyrost-Przyrost*10 || population.unemployed<Przyrost && calcCost(Przyrost)<food.total)
 		spawn(Przyrost);
 	
 }
@@ -120,7 +119,7 @@ function ZatrudniajFarmerow(){
 	if (document.getElementById('raiseDead').disabled == false)
 	klerRatio=0.5;
 	else
-	klerRatio=25;
+	klerRatio=15;
 
 	if(netFood2<=FoodPrzyrost || population.farmers < population.labourers*100)
 		hire('farmers',Przyrost);
@@ -128,7 +127,7 @@ function ZatrudniajFarmerow(){
 		hire('apothecaries',Przyrost);
 	if(population.clerics<=temple.total-Przyrost && (population.clerics < 10000 || (graveyard.total>=1000 && population.clerics < ClericCap)) && (population.clerics<population.miners/klerRatio || population.clerics<population.labourers*1))
 		hire('clerics',Przyrost);
-	if((population.soldiers + population.soldiersIll + population.soldiersParty)<=barracks.total-Przyrost || barracks.total-Przyrost<0  && (population.soldiers<population.current/40 && (upgrades.standard == 1 || population.soldiers<population.current/100)))
+	if(((population.soldiers + population.soldiersIll + population.soldiersParty)<=barracks.total-Przyrost || barracks.total-Przyrost<0)  && (population.soldiers<ludnosc/40 && (upgrades.standard == 1 || population.soldiers<ludnosc/100)))
 		hire('soldiers',Przyrost);
     if((population.tanners<population.miners/50 || population.tanners<population.labourers*2) && population.tanners<=tannery.total-Przyrost)
 		hire('tanners',Przyrost);
@@ -172,7 +171,7 @@ function Magazyny(){
 	
 }
 function Walcz(){
-if(upgrades.standard == 1 && (freeLand<=TargetFreeLand || (document.getElementById('underworldUpgrades').style.display == "inline" && population.corpses <= Przyrost)) || deity.devotion<30){	
+if(upgrades.standard == 1 && (freeLand<=TargetFreeLand || (document.getElementById('underworldUpgrades').style.display == "inline" && population.corpses <= Przyrost)) || deity.devotion<30 ){	
 	if(document.getElementById('raidGroup').style.display == 'block') 
 		if(population.soldiersParty>600000)
 			invade('empire');
@@ -202,7 +201,7 @@ if(upgrades.standard == 1 && (freeLand<=TargetFreeLand || (document.getElementBy
 		
 	if(document.getElementById('victoryGroup').style.display == 'block')
 		plunder();
-	if(population.soldiers>=ludnosc/40 && (population.soldiersParty<ludnosc/60 || population.soldiersParty<population.zombies/15) && population.soldiersParty<900000)
+	if(population.soldiers>=ludnosc/40 && (population.soldiersParty<ludnosc/60) && population.soldiersParty<900000)
 		party('soldiers',Przyrost);
 	if(freeLand<=TargetFreeLand && population.soldiersParty<20 && population.soldiers > 20)
 		party('soldiers',20); 
@@ -304,12 +303,7 @@ function klikanie(){
 }
 function wyznanie(){
 	if(upgrades.deity == 0 && piety.total >= 1000){
-		upgrades.deity = 1;
-		piety.total -= 1000;
-		deity.name = 'Hades';
-		document.getElementById('renameDeity').disabled = false;
-		document.getElementById('deitySpecialisation').style.display = "inline";
-		updateDeity();
+		upgrade('deity')
 	}
 	if(upgrades.deity == 1 && document.getElementById('deitySpecialisation').style.display == "inline" && piety.total >= 500)
 		upgrade('deityUnderworld');
