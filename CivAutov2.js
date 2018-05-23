@@ -121,7 +121,7 @@ function ZatrudniajFarmerow(){
 	else
 	klerRatio=25;
 
-	if(netFood2<=FoodPrzyrost || population.farmers < population.labourers*60)
+	if(netFood2<=FoodPrzyrost || population.farmers < population.labourers*80)
 		hire('farmers',Przyrost);
 	if(population.apothecaries<=apothecary.total-Przyrost && (population.apothecaries<population.miners/100 || population.apothecaries<population.labourers))
 		hire('apothecaries',Przyrost);
