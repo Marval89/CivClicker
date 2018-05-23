@@ -61,7 +61,7 @@ function obliczenia(){
 	else if (population.current <100000)
 	FoodPrzyrost = population.current / 2;
 	else if (population.zombies > 100000)
-		 FoodPrzyrost = (population.labourers*100)+10;
+		 FoodPrzyrost = 100;
 	else
 	FoodPrzyrost = population.current / 2;
 	 freeLand = Math.max(land - totalBuildings, 0);
@@ -121,7 +121,7 @@ function ZatrudniajFarmerow(){
 	else
 	klerRatio=25;
 
-	if(netFood2<=FoodPrzyrost)
+	if(netFood2<=FoodPrzyrost || population.farmers < population.labourers*60)
 		hire('farmers',Przyrost);
 	if(population.apothecaries<=apothecary.total-Przyrost && (population.apothecaries<population.miners/100 || population.apothecaries<population.labourers))
 		hire('apothecaries',Przyrost);
