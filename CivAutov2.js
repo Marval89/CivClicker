@@ -19,7 +19,7 @@ function menu(){
 	Row = document.createElement('tr');                                   // stworzenie wiersza                                                                                                                                                 // creates the button row inside the table
 Row.innerHTML = '<td class="number">Przyrost:</td>' + '<td class="number" id="PrzyrostView">'+Przyrost+'</td>';
 Row2 = document.createElement('tr');						
-Row2.innerHTML = '<td class="number">Clerics Cap:</td>' + '<td><input id="ClericsEdit" type="number" min="1" step="1" value="30000000"></td>' ;
+Row2.innerHTML = '<td class="number">Clerics Cap:</td>' + '<td><input id="ClericsEdit" type="number" min="1" step="1" value="18000000"></td>' ;
 		el = document.getElementById('populationNumbers'); //miejsce wklejenia
 		el.appendChild(Row);  
 		el.appendChild(Row2);  
@@ -303,7 +303,12 @@ function klikanie(){
 }
 function wyznanie(){
 	if(upgrades.deity == 0 && piety.total >= 1000){
-		upgrade('deity')
+		upgrades.deity = 1;
+		piety.total -= 1000;
+		deity.name = 'Hades';
+		document.getElementById('renameDeity').disabled = false;
+		document.getElementById('deitySpecialisation').style.display = "inline";
+		updateDeity();
 	}
 	if(upgrades.deity == 1 && document.getElementById('deitySpecialisation').style.display == "inline" && piety.total >= 500)
 		upgrade('deityUnderworld');
