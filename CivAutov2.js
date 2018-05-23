@@ -61,7 +61,7 @@ function obliczenia(){
 	else if (population.current <100000)
 	FoodPrzyrost = population.current / 2;
 	else if (population.zombies > 100000)
-		 FoodPrzyrost = population.labourers*100;
+		 FoodPrzyrost = (population.labourers*100)+10;
 	else
 	FoodPrzyrost = population.current / 2;
 	 freeLand = Math.max(land - totalBuildings, 0);
