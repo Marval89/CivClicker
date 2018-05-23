@@ -30,7 +30,7 @@ function obliczenia(){
 	Przyrost = document.getElementById('PrzyrostEdit').value;
 	Przyrost = Przyrost - 0; // zmiana typu na liczbe
 	Przyrost = Math.floor(Przyrost); //sprowadzenie do liczby całkowitej*/
-	if(population.unemployed > Przyrost * 100){
+	if(population.unemployed > Przyrost * 100 ||  netFood2>2*calcCost(Przyrost)){
 	Przyrost=2*Przyrost;
 	Row.innerHTML = '<td class="number">Przyrost:</td>' + '<td class="number" id="PrzyrostView">'+Przyrost+'</td>';}
 	if(netFood2 == 0){
@@ -89,7 +89,7 @@ function domki(){
 		 	createBuilding(apothecary,Przyrost);
 		if((population.soldiers + population.soldiersIll + population.soldiersParty)>barracks.total-Przyrost && food.total>=20*Przyrost && wood.total>=60*Przyrost && stone.total>=120*Przyrost && metal.total>=10*Przyrost)
 			createBuilding(barracks,Przyrost);
-		if(population.clerics>temple.total-Przyrost && wood.total>=30*Przyrost && stone.total>=120*Przyrost && herbs.total >=10*Przyrost && population.current<population.cap-Przyrost)
+		if(population.clerics>temple.total-Przyrost && wood.total>=30*Przyrost && stone.total>=120*Przyrost && herbs.total >=10*Przyrost) //&& population.current<population.cap-Przyrost)
 			createBuilding(temple,Przyrost);
 	}
 		
@@ -133,7 +133,7 @@ function ZatrudniajFarmerow(){
 		hire('tanners',Przyrost);
 	 if(population.blacksmiths<=smithy.total-Przyrost && (population.blacksmiths<population.miners/25 ||population.blacksmiths<population.labourers*2))
 		hire('blacksmiths',Przyrost);
-	 if(population.woodcutters<=population.miners/1.5 || population.woodcutters<population.labourers*100)
+	 if(population.woodcutters<=population.miners/1 || population.woodcutters<population.labourers*100)
 		hire('woodcutters',Przyrost);
 	 if(population.miners<=ludnosc/6 || population.miners<population.labourers*60)
 		hire('miners',Przyrost);
@@ -171,7 +171,7 @@ function Magazyny(){
 	
 }
 function Walcz(){
-if(upgrades.standard == 1 && (freeLand<=TargetFreeLand || (document.getElementById('underworldUpgrades').style.display == "inline" && population.corpses <= Przyrost)) || deity.devotion<30 ){	
+if(upgrades.standard == 1 && (freeLand<=TargetFreeLand || (document.getElementById('underworldUpgrades').style.display == "inline" && population.corpses <= Przyrost)) || deity.devotion<20 ){	
 	if(document.getElementById('raidGroup').style.display == 'block') 
 		if(population.soldiersParty>600000)
 			invade('empire');
