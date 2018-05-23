@@ -305,7 +305,7 @@ function wyznanie(){
 	if(upgrades.deity == 0 && piety.total >= 1000){
 		upgrade('deity')
 	}
-	if(upgrades.deity == 1 && upgrades.deityType == 0 && piety.total >= 500)
+	if(upgrades.deity == 1 && document.getElementById('deitySpecialisation').style.display == "inline" && piety.total >= 500)
 		upgrade('deityUnderworld');
 		upgrades.deityType = 1;
 	}
