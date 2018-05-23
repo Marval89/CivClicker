@@ -155,11 +155,11 @@ function Magazyny(){
 	maxWoodA = Math.round(woodstock.total*200);
 	maxStoneA =Math.round(stonestock.total*200);
 	if(wood.total>100*Przyrost && freeLand > TargetFreeLand){
-		if(food.total >= maxFoodA-netFood2)
+		if(food.total >= maxFoodA-netFood2 && food.total < 500000000)
 		createBuilding(barn,Przyrost);
-		if(wood.total >= maxWoodA-netWood2)
+		if(wood.total >= maxWoodA-netWood2 && wood.total < 500000000)
 		createBuilding(woodstock,Przyrost);
-		if(stone.total >= maxStoneA-netStone2)
+		if(stone.total >= maxStoneA-netStone2 && stone.total < 500000000)
 		createBuilding(stonestock,Przyrost);
 	}
 	if(upgrades.wheel == 1 && mill.require.wood<wood.total/10 && mill.require.stone < stone.total/10)
