@@ -141,8 +141,8 @@ function ZatrudniajFarmerow(){
 	 
 	 if((population.labourers > 0 || population.current + population.zombies > 3000000) && population.labourers < ludnosc/450)
 		hire('labourers',100);
-	 if(population.unemployed>Przyrost*20)
-		hire('farmers',Przyrost);
+	// if(population.unemployed>Przyrost*20 && population.clerics<=temple.total-Przyrost)
+	//	hire('clerics',Przyrost);
 		
 }
 
