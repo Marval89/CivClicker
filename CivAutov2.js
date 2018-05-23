@@ -303,7 +303,12 @@ function klikanie(){
 }
 function wyznanie(){
 	if(upgrades.deity == 0 && piety.total >= 1000){
-		upgrade('deity')
+		upgrades.deity = 1;
+		piety.total -= 1000;
+		deity.name = 'Hades';
+		document.getElementById('renameDeity').disabled = false;
+		document.getElementById('deitySpecialisation').style.display = "inline";
+		updateDeity();
 	}
 	if(upgrades.deity == 1 && document.getElementById('deitySpecialisation').style.display == "inline" && piety.total >= 500)
 		upgrade('deityUnderworld');
