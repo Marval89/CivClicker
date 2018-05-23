@@ -110,7 +110,7 @@ function Zombie(){
 	}
 }
 function TworzPracownikow() {
-	if((netFood2>FoodPrzyrost-Przyrost*10 || population.unemployed<Przyrost && calcCost(Przyrost)<food.total) && population.zombies < 1000000)
+	if((netFood2>FoodPrzyrost-Przyrost*10 || population.unemployed<Przyrost && calcCost(Przyrost)<food.total) && (population.zombies < 1000000 || food.total > calcCost(Przyrost)*20))
 		spawn(Przyrost);
 	
 }
@@ -127,7 +127,7 @@ function ZatrudniajFarmerow(){
 		hire('apothecaries',Przyrost);
 	if(population.clerics<=temple.total-Przyrost && (population.clerics < 10000 || (graveyard.total>=1000 && population.clerics < ClericCap)) && (population.clerics<population.miners/klerRatio || population.clerics<population.labourers*1))
 		hire('clerics',Przyrost);
-	if(((population.soldiers + population.soldiersIll + population.soldiersParty)<=barracks.total-Przyrost || barracks.total-Przyrost<0)  && (population.soldiers<ludnosc/40 && (upgrades.standard == 1 || population.soldiers<ludnosc/100)))
+	if(((population.soldiers + population.soldiersIll + population.soldiersParty)<=barracks.total-Przyrost || barracks.total-Przyrost<0)  && (population.soldiers<ludnosc/60 && (upgrades.standard == 1 || population.soldiers<ludnosc/100)))
 		hire('soldiers',Przyrost);
     if((population.tanners<population.miners/50 || population.tanners<population.labourers*2) && population.tanners<=tannery.total-Przyrost)
 		hire('tanners',Przyrost);
@@ -139,7 +139,7 @@ function ZatrudniajFarmerow(){
 		hire('miners',Przyrost);
 	 
 	 
-	 if((population.labourers > 0 || population.current + population.zombies > 3000000) && population.labourers < ludnosc/450)
+	 if((population.labourers > 0 || population.current + population.zombies > 3000000) && population.labourers < ludnosc/600)
 		hire('labourers',100);
 	 if(population.unemployed>Przyrost*20)
 		hire('miners',Przyrost);
@@ -201,7 +201,7 @@ if(upgrades.standard == 1 && (freeLand<=TargetFreeLand || (document.getElementBy
 		
 	if(document.getElementById('victoryGroup').style.display == 'block')
 		plunder();
-	if(population.soldiers>=ludnosc/40 && (population.soldiersParty<ludnosc/60) && population.soldiersParty<900000)
+	if(population.soldiers>=ludnosc/60 && (population.soldiersParty<ludnosc/40) && population.soldiersParty<900000)
 		party('soldiers',Przyrost);
 	if(freeLand<=TargetFreeLand && population.soldiersParty<20 && population.soldiers > 20)
 		party('soldiers',20); 
