@@ -30,7 +30,7 @@ function obliczenia(){
 	Przyrost = document.getElementById('PrzyrostEdit').value;
 	Przyrost = Przyrost - 0; // zmiana typu na liczbe
 	Przyrost = Math.floor(Przyrost); //sprowadzenie do liczby całkowitej*/
-	if( netFood2>2*calcCost(Przyrost) || (ludnosc>400000 && netFood2>calcCost(Przyrost)) || ludnosc/Przyrost>10000 ){
+	if( netFood2>2*calcCost(Przyrost) || (ludnosc>400000 && netFood2>calcCost(Przyrost)) || ludnosc/Przyrost>3000 ){
 	Przyrost=2*Przyrost;
 	Row.innerHTML = '<td class="number">Przyrost:</td>' + '<td class="number" id="PrzyrostView">'+Przyrost+'</td>';}
 	if(netFood2 == 0){
@@ -133,7 +133,7 @@ function ZatrudniajFarmerow(){
 		hire('tanners',Przyrost);
 	 if(population.blacksmiths<=smithy.total-Przyrost && (population.blacksmiths<population.miners/25 ||population.blacksmiths<population.labourers*2))
 		hire('blacksmiths',Przyrost);
-	 if(population.woodcutters<=population.miners || population.woodcutters<population.labourers*100)
+	 if(population.woodcutters<=population.miners/1.5 || population.woodcutters<population.labourers*100)
 		hire('woodcutters',Przyrost);
 	 if(population.miners<=ludnosc/6 || population.miners<population.labourers*60)
 		hire('miners',Przyrost);
