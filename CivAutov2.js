@@ -139,11 +139,16 @@ function ZatrudniajFarmerow(){
 		hire('miners',Przyrost);
 	 
 	 
-	 if((population.labourers > 0 || population.current + population.zombies > 3000000) && population.labourers < ludnosc/600)
+	 if(((population.labourers > 0 || population.current + population.zombies > 3000000) && population.labourers < ludnosc/600) && !wonder.completed)
 		hire('labourers',100);
-	 if(population.unemployed>Przyrost*20)
-		hire('miners',Przyrost);
-		
+	 if(population.unemployed>Przyrost*20){
+	 	if(skins.total < herbs.total/100 && skins.total < ore.total/100)
+	 		hire('farmers',Przyrost);
+	 	if(herbs.total < skins.total/100 && herbs.total < ore.total/100)	
+			hire('woodcutters',Przyrost);
+		if((ore.total < skins.total/100 && ore.total < skins.total/100) || population.unemployed>Przyrost*40)	
+			hire('miners',Przyrost);
+	 }
 }
 
 
