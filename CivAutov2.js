@@ -96,7 +96,7 @@ function domki(){
 }
 function Zombie(){
 	if(document.getElementById('underworldUpgrades').style.display == "inline"){
-		if((deity.devotion<30 || upgrades.secrets == 0 || upgrades.feast == 0 || upgrades.book == 0)  && population.corpses>=1+(1*deity.devotion) && stone.total>=200 && piety.total>=200)
+		if((deity.devotion<20 || upgrades.secrets == 0 || upgrades.feast == 0 || upgrades.book == 0)  && population.corpses>=1+(1*deity.devotion) && stone.total>=200 && piety.total>=200)
 			createBuilding(underworldAltar,1)
 		if(upgrades.book == 0 && piety.total>1000 && diety.devotion >=10)
 			upgrade('book');
@@ -127,7 +127,7 @@ function ZatrudniajFarmerow(){
 		hire('apothecaries',Przyrost);
 	if(population.clerics<=temple.total-Przyrost && (population.clerics < 10000 || (graveyard.total>=1000 && population.clerics < ClericCap)) && (population.clerics<population.miners/klerRatio || population.clerics<population.labourers*1))
 		hire('clerics',Przyrost);
-	if(((population.soldiers + population.soldiersIll + population.soldiersParty)<=barracks.total-Przyrost || barracks.total-Przyrost<0)  && (population.soldiers<ludnosc/60 && (upgrades.standard == 1 || population.soldiers<ludnosc/100)))
+	if(((population.soldiers + population.soldiersIll + population.soldiersParty)<=barracks.total-Przyrost || barracks.total-Przyrost<0)  && (population.soldiers<ludnosc/50 && (upgrades.standard == 1 || population.soldiers<ludnosc/100)))
 		hire('soldiers',Przyrost);
     if((population.tanners<population.miners/50 || population.tanners<population.labourers*2) && population.tanners<=tannery.total-Przyrost)
 		hire('tanners',Przyrost);
@@ -201,10 +201,10 @@ if(upgrades.standard == 1 && (freeLand<=TargetFreeLand || (document.getElementBy
 		
 	if(document.getElementById('victoryGroup').style.display == 'block')
 		plunder();
-	if(population.soldiers>=ludnosc/60 && (population.soldiersParty<ludnosc/40) && population.soldiersParty<900000)
+	if(population.soldiers>=ludnosc/50 && (population.soldiersParty<ludnosc/30) && population.soldiersParty<900000)
 		party('soldiers',Przyrost);
-	if(freeLand<=TargetFreeLand && population.soldiersParty<20 && population.soldiers > 20)
-		party('soldiers',20); 
+	if(freeLand<=TargetFreeLand && population.soldiersParty<20)
+		party('soldiers','takeAll');
 	if(upgrades.mathematics==1 && population.siege < population.soldiersParty/4 && metal.total >= 50*Przyrost && leather.total >= 50*Przyrost && wood.total >=200*Przyrost)
 		party('siege',Przyrost);
 }
