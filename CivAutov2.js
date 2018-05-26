@@ -19,7 +19,7 @@ function menu(){
 	Row = document.createElement('tr');                                   // stworzenie wiersza                                                                                                                                                 // creates the button row inside the table
 Row.innerHTML = '<td class="number">Przyrost:</td>' + '<td class="number" id="PrzyrostView">'+Przyrost+'</td>';
 Row2 = document.createElement('tr');						
-Row2.innerHTML = '<td class="number">Clerics Cap:</td>' + '<td><input id="ClericsEdit" type="number" min="1" step="1" value="18000000"></td>' ;
+Row2.innerHTML = '<td class="number">Clerics Cap:</td>' + '<td><input id="ClericsEdit" type="number" min="1" step="1" value="12000000"></td>' ;
 		el = document.getElementById('populationNumbers'); //miejsce wklejenia
 		el.appendChild(Row);  
 		el.appendChild(Row2);  
@@ -133,9 +133,9 @@ function ZatrudniajFarmerow(){
 		hire('tanners',Przyrost);
 	 if(population.blacksmiths<=smithy.total-Przyrost && (population.blacksmiths<population.miners/25 ||population.blacksmiths<population.labourers*2))
 		hire('blacksmiths',Przyrost);
-	 if(population.woodcutters<=population.miners/1 || population.woodcutters<population.labourers*100)
+	 if((population.woodcutters<=ludnosc/6 || population.woodcutters<population.labourers*130) && wood.total < 100000000)
 		hire('woodcutters',Przyrost);
-	 if(population.miners<=ludnosc/6 || population.miners<population.labourers*60)
+	 if((population.miners<=ludnosc/6 || population.miners<population.labourers*60) && stone.total < 100000000)
 		hire('miners',Przyrost);
 	 
 	 
