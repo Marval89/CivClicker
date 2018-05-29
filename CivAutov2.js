@@ -1,5 +1,4 @@
 
-
 var runInterval = 100;      //How often to loop through logic
 var startupDelay = 2000;
 var netFood2;
