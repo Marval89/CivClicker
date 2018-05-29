@@ -331,7 +331,7 @@ function delayStartAgain(){
 function mainLoop() {
 	if(restart==0) menu();
 	obliczenia();
-	klikanie()
+//	klikanie()
 	domki();
 	TworzPracownikow();
 	if (population.unemployed >= Przyrost) ZatrudniajFarmerow();
